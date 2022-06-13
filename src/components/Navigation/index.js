@@ -8,7 +8,7 @@ import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
 
-export default function Navigation() {
+const Navigation = () => {
   const token = useSelector(selectToken);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
@@ -16,7 +16,7 @@ export default function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
-        YOUR PROJECT NAME
+        Tamagotchi Lovers
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
@@ -28,4 +28,6 @@ export default function Navigation() {
       </Navbar.Collapse>
     </Navbar>
   );
-}
+};
+
+export { Navigation };
