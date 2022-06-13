@@ -5,16 +5,14 @@ import { Box, Grid, Button } from "@mui/material";
 import "./style.css";
 import { TamagotchiCard, Loading } from "../../components";
 import { selectTamagotchis } from "../../store/tamagotchi/selector";
-import { fetchTamagotchis } from "../../store/tamagotchi/thunk";
-import { selectUser } from "../../store/user/selectors";
+import { fetchUserTamagotchis } from "../../store/tamagotchi/thunk";
 
 const TamagotchiCards = () => {
   const dispatch = useDispatch();
   const tamagotchis = useSelector(selectTamagotchis);
-  const user = useSelector(selectUser);
 
   useEffect(() => {
-    dispatch(fetchTamagotchis);
+    dispatch(fetchUserTamagotchis);
   }, [dispatch]);
 
   return tamagotchis ? (

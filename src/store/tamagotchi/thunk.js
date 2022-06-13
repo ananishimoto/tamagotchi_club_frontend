@@ -4,7 +4,7 @@ import { showMessageWithTimeout } from "../appState/actions";
 import { selectToken } from "../user/selectors";
 import { startLoading, tamagotchisFetched } from "./slice";
 
-export async function fetchTamagotchis(dispatch, getState) {
+export async function fetchUserTamagotchis(dispatch, getState) {
   try {
     dispatch(appLoading());
     dispatch(startLoading());

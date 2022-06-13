@@ -1,13 +1,18 @@
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-
+import { ClubCards } from "./clubcards";
 import "./style.css";
 import { TamagotchiCards } from "./tamagotchicards";
 
 const Profile = () => {
   return (
     <div className="profilepage">
-      <TamagotchiCards />
+      <div className="tamagotchiOverview">
+        <h1>My Tamagotchi's</h1>
+        <TamagotchiCards />
+      </div>
+      <div className="clubOverview">
+        <h1>My Clubs</h1>
+        <ClubCards />
+      </div>
     </div>
   );
 };
