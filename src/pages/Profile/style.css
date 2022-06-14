@@ -2,5 +2,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #e4ed58;
+  color: #f2944e;
 }

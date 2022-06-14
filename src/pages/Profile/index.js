@@ -8,13 +8,6 @@ import "./style.css";
 import { TamagotchiCards } from "./tamagotchicards";
 
 const Profile = () => {
-  const navigate = useNavigate();
-  const user = useSelector(selectUser);
-
-  if (user === null) {
-    navigate("/");
-  }
-
   return (
     <div className="profilepage">
       <div className="tamagotchiOverview">
