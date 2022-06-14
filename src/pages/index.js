@@ -4,3 +4,4 @@ export * from "./HomePage";
 export * from "./Profile";
 export * from "./Club";
 export * from "./TipsAndTricks";
+export * from "./HomePageBG";
