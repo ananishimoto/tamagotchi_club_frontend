@@ -2,7 +2,9 @@ import axios from "axios";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
 import { selectToken } from "../user/selectors";
-import { deleteTamagotchi, startLoading, tamagotchisFetched } from "./slice";
+
+import { deleteTamagotchi, startLoading, tamagotchisFetched,addTamagotchiSuccess } from "./slice";
+
 
 export async function fetchUserTamagotchis(dispatch, getState) {
   try {
@@ -25,6 +27,109 @@ export async function fetchUserTamagotchis(dispatch, getState) {
     dispatch(appDoneLoading());
   }
 }
+//add tamagotchi
+
+export function FetchAddTamagotchi(
+  name,
+  age,
+  deaths,
+  version,
+  generation,
+  imageUrl,
+  evolutionId
+) {
+  return async function (dispatch, getState) {
+    try {
+      const { token } = getState().user;
+      dispatch(startLoading());
+      const newtama = await axios({
+        method: "post",
+        url: `http://localhost:4000/tamagotchi`,
+        data: {
+          name: name,
+          age: age,
+          deaths: deaths,
+          version: version,
+          generation: generation,
+          imageUrl: imageUrl,
+          evolutionId: evolutionId,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(newtama.data);
+      // const createForm = data;
+      // console.log("createTamagotchi", createForm);
+      // dispatch(
+      //   showMessageWithTimeout("success", false, "Tamagotchi created", 1500)
+      // );
+      const createTamagotchi = newtama.data;
+      dispatch(addTamagotchiSuccess(createTamagotchi));
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+}
+
+// //edit tamagotchi
+// export const FetchEditTamaForm = (
+//   name,
+//   age,
+//   deaths,
+//   version,
+//   generation,
+//   imageUrl,
+//   evolutionId
+// ) => {
+//   return async (dispatch, getState) => {
+//     try {
+//       const { token } = getState().user;
+//       const response = await axios.patch(
+//         `${apiUrl}/user/edit`,
+//         {
+//           name,
+//           age,
+//           deaths,
+//           version,
+//           generation,
+//           imageUrl,
+//           evolutionId
+//         },
+//         {
+//           headers: {
+//             Authorization: `Bearer ${token}`,
+//           },
+//         }
+//       );
+
+//       dispatch(fetchProfile);
+//       dispatch(appDoneLoading());
+//     } catch (error) {
+//       if (error.response) {
+//         console.log(error.response.data.message);
+//         dispatch(
+//           setMessage({
+//             variant: "danger",
+//             dismissable: true,
+//             text: error.response.data.message,
+//           })
+//         );
+//       } else {
+//         console.log(error.message);
+//         dispatch(
+//           setMessage({
+//             variant: "danger",
+//             dismissable: true,
+//             text: error.message,
+//           })
+//         );
+//       }
+//       dispatch(appDoneLoading());
+//     }
+//   };
+// };
+
 
 export const deleteUserTamagotchi = (tamaId) => async (dispatch, getState) => {
   try {
@@ -46,3 +151,4 @@ export const deleteUserTamagotchi = (tamaId) => async (dispatch, getState) => {
     dispatch(appDoneLoading());
   }
 };
+
