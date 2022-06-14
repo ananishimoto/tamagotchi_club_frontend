@@ -61,16 +61,6 @@ const Navigation = () => {
           </Button>
           <Button color="inherit">
             <Link
-              href="/club"
-              color="inherit"
-              underline="none"
-              className="custom-link"
-            >
-              Club
-            </Link>
-          </Button>
-          <Button color="inherit">
-            <Link
               href="/tips"
               color="inherit"
               underline="none"

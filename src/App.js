@@ -2,7 +2,15 @@ import React, { useEffect } from "react";
 import "./App.css";
 
 import { Loading, MessageBox, Navigation } from "./components";
-import { Club, HomePage, Login, Profile, SignUp, TipsAndTricks } from "./pages";
+import {
+  Club,
+  HomePage,
+  Login,
+  Profile,
+  SignUp,
+  TipsAndTricks,
+  HomePageBG,
+} from "./pages";
 
 import { Routes, Route } from "react-router-dom";
 
@@ -28,9 +36,12 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/club" element={<Club />} />
+        <Route path="/club/:id" element={<Club />} />
         <Route path="/tips" element={<TipsAndTricks />} />
       </Routes>
+      <div className="background">
+        <HomePageBG />
+      </div>
     </div>
   );
 }

@@ -5,7 +5,10 @@ import { Box, Grid, Button } from "@mui/material";
 import "./style.css";
 import { TamagotchiCard, Loading } from "../../components";
 import { selectTamagotchis } from "../../store/tamagotchi/selector";
-import { fetchUserTamagotchis } from "../../store/tamagotchi/thunk";
+import {
+  deleteUserTamagotchi,
+  fetchUserTamagotchis,
+} from "../../store/tamagotchi/thunk";
 
 const TamagotchiCards = () => {
   const dispatch = useDispatch();
@@ -14,6 +17,10 @@ const TamagotchiCards = () => {
   useEffect(() => {
     dispatch(fetchUserTamagotchis);
   }, [dispatch]);
+
+  const onClickDeleteTama = (id) => {
+    dispatch(deleteUserTamagotchi(id));
+  };
 
   return tamagotchis ? (
     <div className="tamagotchicardspage">
@@ -36,10 +43,22 @@ const TamagotchiCards = () => {
                   imageUrl={tamagotchi.imageUrl}
                   age={tamagotchi.age}
                   deaths={tamagotchi.deaths}
-                  evolution={tamagotchi.evolution}
+                  evolution={tamagotchi.evolution.level}
                   btnEdit={
-                    <Button variant="text" style={{ color: "#009a7e" }}>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
+                    >
                       Edit
+                    </Button>
+                  }
+                  btnDelete={
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
+                      onClick={() => onClickDeleteTama(tamagotchi.id)}
+                    >
+                      Delete
                     </Button>
                   }
                 />

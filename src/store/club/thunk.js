@@ -3,12 +3,12 @@ import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
 import { selectToken } from "../user/selectors";
 import { startLoading } from "../tamagotchi/slice";
-import { clubsFetched } from "./slice";
+import { clubsFetched, ownerClubsFetched } from "./slice";
 
 export async function fetchUserClubs(dispatch, getState) {
   try {
     dispatch(appLoading());
-    dispatch(startLoading());
+    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get("http://localhost:4000/club/mine", {
@@ -20,6 +20,28 @@ export async function fetchUserClubs(dispatch, getState) {
     const clubs = response.data;
 
     dispatch(clubsFetched(clubs));
+    dispatch(appDoneLoading());
+  } catch (e) {
+    console.log(e.message);
+    dispatch(appDoneLoading());
+  }
+}
+
+export async function fetchOwnerClubs(dispatch, getState) {
+  try {
+    dispatch(appLoading());
+    // dispatch(startLoading());
+    const { token } = getState().user;
+
+    const response = await axios.get(`http://localhost:4000/club/owner`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("thunk owner response", response.data);
+    const ownedclubs = response.data;
+
+    dispatch(ownerClubsFetched(ownedclubs));
     dispatch(appDoneLoading());
   } catch (e) {
     console.log(e.message);

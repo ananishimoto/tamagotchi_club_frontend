@@ -2,16 +2,14 @@ import axios from "axios";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
 import { selectToken } from "../user/selectors";
-import {
-  startLoading,
-  tamagotchisFetched,
-  addTamagotchiSuccess,
-} from "./slice";
+
+import { deleteTamagotchi, startLoading, tamagotchisFetched,addTamagotchiSuccess } from "./slice";
+
 
 export async function fetchUserTamagotchis(dispatch, getState) {
   try {
     dispatch(appLoading());
-    dispatch(startLoading());
+    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get("http://localhost:4000/tamagotchi/mine", {
@@ -131,3 +129,26 @@ export function FetchAddTamagotchi(
 //     }
 //   };
 // };
+
+
+export const deleteUserTamagotchi = (tamaId) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().user;
+    dispatch(appLoading());
+    const userTama = await axios.delete(
+      `http://localhost:4000/tamagotchi/${tamaId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("delete thunk", userTama.data);
+    dispatch(deleteTamagotchi(tamaId));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    console.log(error.message);
+    dispatch(appDoneLoading());
+  }
+};
+
