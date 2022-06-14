@@ -8,7 +8,7 @@ import { clubsFetched, ownerClubsFetched } from "./slice";
 export async function fetchUserClubs(dispatch, getState) {
   try {
     dispatch(appLoading());
-    dispatch(startLoading());
+    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get("http://localhost:4000/club/mine", {
@@ -30,7 +30,7 @@ export async function fetchUserClubs(dispatch, getState) {
 export async function fetchOwnerClubs(dispatch, getState) {
   try {
     dispatch(appLoading());
-    dispatch(startLoading());
+    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get(`http://localhost:4000/club/owner`, {

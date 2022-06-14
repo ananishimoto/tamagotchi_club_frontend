@@ -23,10 +23,10 @@ const ClubCards = () => {
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={club.id}>
                 <ClubCard
-                  id={club.id}
-                  name={club.name}
-                  pictureUrl={club.pictureUrl}
-                  description={club.description}
+                  id={club.club.id}
+                  name={club.club.name}
+                  pictureUrl={club.club.pictureUrl}
+                  description={club.club.description}
                 />
               </Grid>
             );
