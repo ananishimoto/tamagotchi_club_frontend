@@ -1,18 +1,18 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, Button } from "@mui/material";
 
 import "./style.css";
 import { Loading, ClubCard } from "../../components";
-import { selectClubs } from "../../store/club/selector";
-import { fetchUserClubs } from "../../store/club/thunk";
+import { selectOwnerClubs } from "../../store/club/selector";
+import { fetchOwnerClubs } from "../../store/club/thunk";
 
-const ClubCards = () => {
+const ClubOwnerCards = () => {
   const dispatch = useDispatch();
-  const clubs = useSelector(selectClubs);
+  const clubs = useSelector(selectOwnerClubs);
 
   useEffect(() => {
-    dispatch(fetchUserClubs);
+    dispatch(fetchOwnerClubs);
   }, [dispatch]);
 
   return clubs ? (
@@ -27,6 +27,11 @@ const ClubCards = () => {
                   name={club.name}
                   pictureUrl={club.pictureUrl}
                   description={club.description}
+                  btnEdit={
+                    <Button variant="text" style={{ color: "#009a7e" }}>
+                      Edit
+                    </Button>
+                  }
                 />
               </Grid>
             );
@@ -41,4 +46,4 @@ const ClubCards = () => {
   );
 };
 
-export { ClubCards };
+export { ClubOwnerCards };
