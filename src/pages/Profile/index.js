@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import { ClubCards } from "./clubcards";
 import { ClubOwnerCards } from "./clubownercards";
 import "./style.css";
@@ -7,15 +8,39 @@ const Profile = () => {
   return (
     <div className="profilepage">
       <div className="tamagotchiOverview">
-        <h1>My Tamagotchi's</h1>
+        <div className="tamagotchiTitle">
+          <h1>My Tamagotchi's</h1>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#f2944e", color: "#e4ed58" }}
+          >
+            Add new Tamagotchi
+          </Button>
+        </div>
         <TamagotchiCards />
       </div>
       <div className="clubmemberOverview">
-        <h1>Clubs</h1>
+        <div className="tamagotchiTitle">
+          <h1>Clubs</h1>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#f2944e", color: "#e4ed58" }}
+          >
+            Add new Club
+          </Button>
+        </div>
         <ClubCards />
       </div>
       <div className="clubownerOverview">
-        <h1>My Clubs</h1>
+        <div className="tamagotchiTitle">
+          <h1>My Clubs</h1>
+          <Button
+            variant="contained"
+            style={{ backgroundColor: "#f2944e", color: "#e4ed58" }}
+          >
+            Add new Club
+          </Button>
+        </div>
         <ClubOwnerCards />
       </div>
     </div>
