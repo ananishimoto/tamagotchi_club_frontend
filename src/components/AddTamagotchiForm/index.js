@@ -89,8 +89,12 @@ const AddTamagotchiForm = () => {
 
   return (
     <div>
-      <Button variant="contained" onClick={handleOpen}>
-        Add
+      <Button
+        variant="contained"
+        style={{ backgroundColor: "#f2944e", color: "#e4ed58" }}
+        onClick={handleOpen}
+      >
+        Add new Tamagotchi
       </Button>
       <Modal
         open={open}

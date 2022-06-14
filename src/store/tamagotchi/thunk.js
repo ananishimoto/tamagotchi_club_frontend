@@ -30,7 +30,6 @@ export async function fetchUserTamagotchis(dispatch, getState) {
     dispatch(appDoneLoading());
   }
 }
-
 //add tamagotchi
 
 export function FetchAddTamagotchi(
