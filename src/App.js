@@ -36,7 +36,7 @@ function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/club" element={<Club />} />
+        <Route path="/club/:id" element={<Club />} />
         <Route path="/tips" element={<TipsAndTricks />} />
       </Routes>
       <div className="background">

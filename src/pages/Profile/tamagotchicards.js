@@ -54,8 +54,8 @@ const TamagotchiCards = () => {
                   }
                   btnDelete={
                     <Button
-                      variant="text"
-                      style={{ color: "#009a7e" }}
+                      variant="contained"
+                      style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
                       onClick={() => onClickDeleteTama(tamagotchi.id)}
                     >
                       Delete
