@@ -8,6 +8,7 @@ const TamagotchiCard = ({
   evolution,
   imageUrl,
   btnEdit,
+  btnDelete,
 }) => {
   return (
     <div className="tamagotchiCard" key={id}>
@@ -26,7 +27,10 @@ const TamagotchiCard = ({
           <p>Deaths: {deaths}</p>
           <p>Evolution: {evolution}</p>
         </div>
-        <div className="editButton">{btnEdit}</div>
+        <div className="tamagotchiSpecs">
+          <div className="editButton">{btnEdit}</div>
+          <div className="deleteButton">{btnDelete}</div>
+        </div>
       </div>
     </div>
   );
