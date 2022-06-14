@@ -1,12 +1,28 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
-import Nav from "react-bootstrap/Nav";
-import { NavLink } from "react-router-dom";
+import "./style.css";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  Link,
+  createTheme,
+} from "@mui/material";
 import { useSelector } from "react-redux";
 import { selectToken } from "../../store/user/selectors";
-import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      light: "#ff9800",
+      main: "#fb8c00",
+      dark: "#e65100",
+      contrastText: "#fff",
+    },
+  },
+});
 
 const Navigation = () => {
   const token = useSelector(selectToken);
@@ -14,19 +30,62 @@ const Navigation = () => {
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
 
   return (
-    <Navbar bg="light" expand="lg">
-      <Navbar.Brand as={NavLink} to="/">
-        Tamagotchi Lovers
-      </Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav style={{ width: "100%" }} fill>
-          <NavbarItem path="/" linkText="Home" />
-          <NavbarItem path="/other" linkText="Other" />
+    <AppBar position="static" theme={theme}>
+      <Toolbar className="navbar">
+        <div>
+          <Typography variant="h5" component="span">
+            <Link
+              href="/"
+              color="inherit"
+              underline="none"
+              variant="h5"
+              hover="none"
+              className="custom-link"
+            >
+              {" "}
+              Tamagotchi CLUB{" "}
+            </Link>
+          </Typography>
+        </div>
+        <div>
+          <Button color="inherit">
+            <Link
+              href="/"
+              color="inherit"
+              underline="none"
+              theme={theme}
+              className="custom-link"
+            >
+              Home Page
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link
+              href="/club"
+              color="inherit"
+              underline="none"
+              className="custom-link"
+            >
+              Club
+            </Link>
+          </Button>
+          <Button color="inherit">
+            <Link
+              href="/tips"
+              color="inherit"
+              underline="none"
+              className="custom-link"
+            >
+              Tips
+            </Link>
+          </Button>
+        </div>
+        <div className="loggedin">
+          <Button color="inherit"></Button>
           {loginLogoutControls}
-        </Nav>
-      </Navbar.Collapse>
-    </Navbar>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 };
 

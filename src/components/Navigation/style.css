@@ -1,0 +1,14 @@
+.navbar {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.custom-link:hover {
+  color: #c2185b;
+}
+
+.loggedin {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
