@@ -1,0 +1,49 @@
+.tamagotchiCard {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  background-color: #5d3c76;
+  background-size: cover;
+  border: 10px solid #930065;
+  border-radius: 15px;
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  padding: 10px;
+  margin: 10px;
+  max-height: 600px;
+}
+
+.tamagotchiCard:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+.tamagotchiCardInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  color: white;
+  margin-top: auto;
+}
+
+.tamagotchiSpecs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-bottom: -1rem;
+}
+
+.tamagotchiImageBox {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  margin-bottom: 10px;
+}
+
+.tamagotchiImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100%;
+  max-width: 100%;
+}

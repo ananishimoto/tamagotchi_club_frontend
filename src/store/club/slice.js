@@ -12,13 +12,13 @@ export const clubSlice = createSlice({
     startLoading: (state) => {
       state.loading = true;
     },
-    clubFetched: (state, action) => {
+    clubsFetched: (state, action) => {
       state.list = action.payload;
       state.loading = false;
     },
   },
 });
 
-export const { startLoading, clubFetched } = clubSlice.actions;
+export const { startLoading, clubsFetched } = clubSlice.actions;
 
 export default clubSlice.reducer;
