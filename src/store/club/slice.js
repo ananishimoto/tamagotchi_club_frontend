@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   loading: false,
   list: [],
+  owner: [],
 };
 
 export const clubSlice = createSlice({
@@ -16,9 +17,14 @@ export const clubSlice = createSlice({
       state.list = action.payload;
       state.loading = false;
     },
+    ownerClubsFetched: (state, action) => {
+      state.owner = action.payload;
+      state.loading = false;
+    },
   },
 });
 
-export const { startLoading, clubsFetched } = clubSlice.actions;
+export const { startLoading, clubsFetched, ownerClubsFetched } =
+  clubSlice.actions;
 
 export default clubSlice.reducer;

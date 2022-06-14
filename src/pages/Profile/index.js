@@ -1,4 +1,5 @@
 import { ClubCards } from "./clubcards";
+import { ClubOwnerCards } from "./clubownercards";
 import "./style.css";
 import { TamagotchiCards } from "./tamagotchicards";
 
@@ -9,9 +10,13 @@ const Profile = () => {
         <h1>My Tamagotchi's</h1>
         <TamagotchiCards />
       </div>
-      <div className="clubOverview">
-        <h1>My Clubs</h1>
+      <div className="clubmemberOverview">
+        <h1>Clubs</h1>
         <ClubCards />
+      </div>
+      <div className="clubownerOverview">
+        <h1>My Clubs</h1>
+        <ClubOwnerCards />
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import { deleteTamagotchi, startLoading, tamagotchisFetched } from "./slice";
 export async function fetchUserTamagotchis(dispatch, getState) {
   try {
     dispatch(appLoading());
-    dispatch(startLoading());
+    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get("http://localhost:4000/tamagotchi/mine", {
