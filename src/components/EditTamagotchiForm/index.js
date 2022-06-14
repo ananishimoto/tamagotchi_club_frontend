@@ -7,7 +7,7 @@ import Modal from "@mui/material/Modal";
 import Form from "react-bootstrap/Form";
 import { Button } from "@mui/material";
 import { Col } from "react-bootstrap";
-import { FetchAddTamagotchi } from "../../store/tamagotchi/thunk";
+import { editTamaForm } from "../../store/tamagotchi/thunk";
 
 const style = {
   position: "absolute",
@@ -24,17 +24,26 @@ const style = {
   borderRadius: "20px",
 };
 
-const EditTamagotchiForm = () => {
+const EditTamagotchiForm = ({
+  id,
+  nameTama,
+  ageTama,
+  deathsTama,
+  versionTama,
+  generationTama,
+  imageTama,
+  evolutionIdTama,
+}) => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const [name, setName] = useState("");
-  const [age, setAge] = useState("");
-  const [deaths, setDeaths] = useState("");
-  const [version, setVersion] = useState("");
-  const [generation, setGeneration] = useState(false);
-  const [evolutionId, setEvolutionId] = useState("");
+  const [name, setName] = useState(nameTama);
+  const [age, setAge] = useState(ageTama);
+  const [deaths, setDeaths] = useState(deathsTama);
+  const [version, setVersion] = useState(versionTama);
+  const [generation, setGeneration] = useState(generationTama);
+  const [evolutionId, setEvolutionId] = useState(evolutionIdTama);
 
   const dispatch = useDispatch();
 
@@ -42,12 +51,22 @@ const EditTamagotchiForm = () => {
     console.log("hi");
     event.preventDefault();
     dispatch(
-      FetchAddTamagotchi(name, age, deaths, version, generation, evolutionId)
+      editTamaForm(
+        id,
+        name,
+        age,
+        deaths,
+        version,
+        generation,
+        image,
+        evolutionId
+      )
     );
+    setOpen(false);
   }
 
   //Cloudinary image
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(imageTama);
 
   const uploadImage = async (e) => {
     const files = e.target.files;
@@ -74,7 +93,13 @@ const EditTamagotchiForm = () => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Add Tamagotchi</Button>
+      <Button
+        style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
+        variant="contained"
+        onClick={handleOpen}
+      >
+        Edit
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -165,12 +190,14 @@ const EditTamagotchiForm = () => {
                   required
                 />
               </Form.Group>
+              <br />
               <Button
                 variant="primary"
                 type="submit"
+                style={{ backgroundColor: "#bd5487", color: "#e4ed58" }}
                 onClick={submitEditTamaForm}
               >
-                Edit
+                Edit Tamagotchi
               </Button>
             </Form>
           </Typography>
