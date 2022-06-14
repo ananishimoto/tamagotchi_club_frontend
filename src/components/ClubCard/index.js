@@ -1,3 +1,4 @@
+import { Link } from "@mui/material";
 import "./style.css";
 
 const ClubCard = ({ id, name, description, pictureUrl, btnEdit }) => {
@@ -7,7 +8,9 @@ const ClubCard = ({ id, name, description, pictureUrl, btnEdit }) => {
         <img src={pictureUrl} alt={name} className="clubImage" loading="lazy" />
       </div>
       <div className="clubCardInfo">
-        <h2>{name}</h2>
+        <Link href={`/club/${id}`} color="inherit">
+          <h2>{name}</h2>
+        </Link>
         <p>{description}</p>
         <div className="editButton">{btnEdit}</div>
       </div>
