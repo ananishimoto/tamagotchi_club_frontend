@@ -57,9 +57,12 @@ export default function SignUp() {
         <Box
           sx={{
             marginTop: 8,
+            padding: 5,
+            borderRadius: 10,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            backgroundColor: "#e4ed58",
           }}
         >
           <Avatar sx={{ m: 1, bgcolor: "primary.dark" }}>
