@@ -36,9 +36,12 @@ const TamagotchiCards = () => {
                   imageUrl={tamagotchi.imageUrl}
                   age={tamagotchi.age}
                   deaths={tamagotchi.deaths}
-                  evolution={tamagotchi.evolution}
+                  evolution={tamagotchi.evolution.level}
                   btnEdit={
-                    <Button variant="text" style={{ color: "#009a7e" }}>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
+                    >
                       Edit
                     </Button>
                   }

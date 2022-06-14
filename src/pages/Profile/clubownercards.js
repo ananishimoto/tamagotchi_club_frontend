@@ -28,7 +28,10 @@ const ClubOwnerCards = () => {
                   pictureUrl={club.pictureUrl}
                   description={club.description}
                   btnEdit={
-                    <Button variant="text" style={{ color: "#009a7e" }}>
+                    <Button
+                      variant="contained"
+                      style={{ backgroundColor: "#1c1237", color: "#005f92" }}
+                    >
                       Edit
                     </Button>
                   }
