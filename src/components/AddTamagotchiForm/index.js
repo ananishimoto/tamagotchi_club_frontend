@@ -33,7 +33,7 @@ const AddTamagotchiForm = () => {
   const [age, setAge] = useState("");
   const [deaths, setDeaths] = useState("");
   const [version, setVersion] = useState("");
-  const [generation, setGeneration] = useState(false);
+  const [generation, setGeneration] = useState("");
   const [evolutionId, setEvolutionId] = useState("");
 
   const dispatch = useDispatch();
@@ -42,8 +42,23 @@ const AddTamagotchiForm = () => {
     console.log("hi");
     event.preventDefault();
     dispatch(
-      FetchAddTamagotchi(name, age, deaths, version, generation, evolutionId)
+      FetchAddTamagotchi(
+        name,
+        age,
+        deaths,
+        version,
+        generation,
+        image,
+        evolutionId
+      )
     );
+    setName("");
+    setAge("");
+    setDeaths("");
+    setVersion("");
+    setGeneration("");
+    setEvolutionId("");
+    setImage("");
   }
 
   //Cloudinary image
@@ -74,7 +89,9 @@ const AddTamagotchiForm = () => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Add Tamagotchi</Button>
+      <Button variant="contained" onClick={handleOpen}>
+        Add
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
