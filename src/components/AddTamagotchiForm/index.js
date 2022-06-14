@@ -1,13 +1,28 @@
 import "./style.css";
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Form from "react-bootstrap/Form";
 import { Button } from "@mui/material";
 import { Col } from "react-bootstrap";
-import { selectToken } from "./selectors";
+import { FetchAddTamagotchi } from "../../store/tamagotchi/thunk";
+
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 550,
+  bgcolor: "#f2944e",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+  maxHeight: "90%",
+  overflow: "auto",
+  borderRadius: "20px",
+};
 
 const AddTamagotchiForm = () => {
   const [open, setOpen] = React.useState(false);
@@ -22,14 +37,14 @@ const AddTamagotchiForm = () => {
   const [evolutionId, setEvolutionId] = useState("");
 
   const dispatch = useDispatch();
-  const token = useSelector(selectToken);
-  const navigate = useNavigate();
 
-  useEffect(() => {
-    if (token !== null) {
-      navigate("/");
-    }
-  }, [token, navigate]);
+  function submitTamaForm(event) {
+    console.log("hi");
+    event.preventDefault();
+    dispatch(
+      FetchAddTamagotchi(name, age, deaths, version, generation, evolutionId)
+    );
+  }
 
   //Cloudinary image
   const [image, setImage] = useState("");
@@ -59,9 +74,14 @@ const AddTamagotchiForm = () => {
 
   return (
     <div>
-      <Button onClick={handleOpen}>Edit</Button>
-      <Modal>
-        <Box>
+      <Button onClick={handleOpen}>Add Tamagotchi</Button>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={style}>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5">
               <Form.Group controlId="formBasicName">
@@ -145,6 +165,9 @@ const AddTamagotchiForm = () => {
                   required
                 />
               </Form.Group>
+              <Button variant="primary" type="submit" onClick={submitTamaForm}>
+                Add Tamagotchi
+              </Button>
             </Form>
           </Typography>
         </Box>

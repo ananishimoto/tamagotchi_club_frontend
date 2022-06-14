@@ -16,9 +16,13 @@ export const tamagotchiSlice = createSlice({
       state.list = action.payload;
       state.loading = false;
     },
+    addTamagotchiSuccess: (state, action) => {
+      state.list = [...state.list, action.payload];
+    },
   },
 });
 
-export const { startLoading, tamagotchisFetched } = tamagotchiSlice.actions;
+export const { startLoading, tamagotchisFetched, addTamagotchiSuccess } =
+  tamagotchiSlice.actions;
 
 export default tamagotchiSlice.reducer;
