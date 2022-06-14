@@ -1,13 +1,36 @@
 import "./style.css";
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
+import { Button } from "@mui/material";
 import { Col } from "react-bootstrap";
+import { selectToken } from "./selectors";
 
 const AddTamagotchiForm = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [deaths, setDeaths] = useState("");
+  const [version, setVersion] = useState("");
+  const [generation, setGeneration] = useState(false);
+  const [evolutionId, setEvolutionId] = useState("");
+
+  const dispatch = useDispatch();
+  const token = useSelector(selectToken);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (token !== null) {
+      navigate("/");
+    }
+  }, [token, navigate]);
+
   //Cloudinary image
   const [image, setImage] = useState("");
 
@@ -44,8 +67,8 @@ const AddTamagotchiForm = () => {
               <Form.Group controlId="formBasicName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control
-                  value={nameSignUp}
-                  onChange={(event) => setTamaName(event.target.value)}
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
                   type="text"
                   placeholder="Enter name"
                   required
@@ -56,7 +79,7 @@ const AddTamagotchiForm = () => {
                 <Form.Label>Age</Form.Label>
                 <Form.Control
                   value={age}
-                  onChange={(event) => setTamaAge(event.target.value)}
+                  onChange={(event) => setAge(event.target.value)}
                   type="number"
                   placeholder="Enter age"
                   required
@@ -67,7 +90,7 @@ const AddTamagotchiForm = () => {
                 <Form.Label>Deaths</Form.Label>
                 <Form.Control
                   value={deaths}
-                  onChange={(event) => setTamaDeaths(event.target.value)}
+                  onChange={(event) => setDeaths(event.target.value)}
                   type="number"
                   required
                 />
@@ -77,7 +100,7 @@ const AddTamagotchiForm = () => {
                 <Form.Label>version</Form.Label>
                 <Form.Control
                   value={version}
-                  onChange={(event) => setTamaVersion(event.target.value)}
+                  onChange={(event) => setVersion(event.target.value)}
                   type="text"
                   placeholder="The Original"
                   required
@@ -88,7 +111,7 @@ const AddTamagotchiForm = () => {
                 <Form.Label>generation</Form.Label>
                 <Form.Control
                   value={generation}
-                  onChange={(event) => setTamaGeneration(event.target.value)}
+                  onChange={(event) => setGeneration(event.target.value)}
                   type="number"
                   required
                 />
@@ -117,7 +140,7 @@ const AddTamagotchiForm = () => {
                 <Form.Label>evolutionId</Form.Label>
                 <Form.Control
                   value={evolutionId}
-                  onChange={(event) => setTamaEvolution(event.target.value)}
+                  onChange={(event) => setEvolutionId(event.target.value)}
                   type="number"
                   required
                 />

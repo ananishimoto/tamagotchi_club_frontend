@@ -1,5 +1,5 @@
 import "./style.css";
-import Button from "react-bootstrap/Button";
+import { Button } from "@mui/material";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Form from "react-bootstrap/Form";
