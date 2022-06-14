@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 
-import { HeroBanner, Loading, MessageBox, Navigation } from "./components";
+import { Loading, MessageBox, Navigation } from "./components";
 import { Club, HomePage, Login, Profile, SignUp, TipsAndTricks } from "./pages";
 
 import { Routes, Route } from "react-router-dom";
