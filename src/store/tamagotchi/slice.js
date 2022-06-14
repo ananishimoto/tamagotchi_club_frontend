@@ -16,9 +16,14 @@ export const tamagotchiSlice = createSlice({
       state.list = action.payload;
       state.loading = false;
     },
+    deleteTamagotchi: (state, action) => {
+      const tamaId = action.payload;
+      state.list = state.list.filter((tama) => tama.id !== tamaId);
+    },
   },
 });
 
-export const { startLoading, tamagotchisFetched } = tamagotchiSlice.actions;
+export const { startLoading, tamagotchisFetched, deleteTamagotchi } =
+  tamagotchiSlice.actions;
 
 export default tamagotchiSlice.reducer;
