@@ -1,3 +1,4 @@
+import { Hearts } from "./hearts";
 import "./style.css";
 
 const TamagotchiCard = ({
@@ -41,68 +42,7 @@ const TamagotchiCard = ({
             />
           </p>
           <p>
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-          </p>
-          <p>
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
-            <img
-              src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
-              alt="hearts"
-              style={{ maxHeight: "30px", maxWidth: "30px" }}
-              loading="lazy"
-            />
+            <Hearts evolutionId={evolutionId} evolutionlevel={evolutionlevel} />
           </p>
         </div>
         <div className="tamagotchiButtons">
