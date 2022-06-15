@@ -1,11 +1,15 @@
 import "./style.css";
+import { EditTamagotchiForm } from "../EditTamagotchiForm";
+import { version } from "react";
 
 const TamagotchiCard = ({
   id,
   name,
   age,
   deaths,
+  generation,
   evolution,
+  evolutionId,
   imageUrl,
   btnEdit,
   btnDelete,
@@ -28,7 +32,17 @@ const TamagotchiCard = ({
           <p>Evolution: {evolution}</p>
         </div>
         <div className="tamagotchiSpecs">
-          <div className="editButton">{btnEdit}</div>
+          <div>{btnEdit}</div>
+//           <EditTamagotchiForm
+//             id={id}
+//             nameTama={name}
+//             ageTama={age}
+//             deathsTama={deaths}
+//             versionTama={version}
+//             imageTama={imageUrl}
+//             generationTama={generation}
+//             evolutionIdTama={evolutionId}
+//           />
           <div className="deleteButton">{btnDelete}</div>
         </div>
       </div>
