@@ -51,6 +51,7 @@ const AddTamagotchiForm = () => {
     setGeneration("");
     setEvolutionId("");
     setImage("");
+    setOpen(false);
   }
 
   //Cloudinary image

@@ -85,9 +85,8 @@ export const editTamaForm = (
     try {
       const { token } = getState().user;
       const editTama = await axios.patch(
-        `http://localhost:4000/tamagotchi/editTamaForm`,
+        `http://localhost:4000/tamagotchi/${id}`,
         {
-          id,
           name,
           age,
           deaths,
