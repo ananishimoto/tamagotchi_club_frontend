@@ -44,7 +44,8 @@ const TamagotchiCards = () => {
                   age={tamagotchi.age}
                   deaths={tamagotchi.deaths}
                   generation={tamagotchi.generation}
-                  evolution={tamagotchi.evolution.level}
+                  evolutionlevel={tamagotchi.evolution.level}
+                  evolutionimg={tamagotchi.evolution.imageUrl}
                   evolutionId={tamagotchi.evolution.id}
                   btnEdit={
                     <EditTamagotchiForm

@@ -43,11 +43,11 @@
 }
 
 .tamagotchiImage {
-  max-height: 500px;
-  max-width: 150px;
+  max-height: 100%;
+  max-width: 100%;
 }
 
-.tamagotchiImageBox {
+.tamagotchiCardImageBox {
   display: flex;
   justify-content: center;
   align-items: center;
