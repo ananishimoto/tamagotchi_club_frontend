@@ -2,7 +2,7 @@ import "./style.css";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Grid, Modal, Button, Typography, Box, Divider } from "@mui/material";
+import { Grid } from "@mui/material";
 
 import { selectClubs, selectClubMembers } from "../../store/club/selector";
 import { fetchClub } from "../../store/club/thunk";
@@ -30,12 +30,17 @@ const Club = () => {
           style={{
             backgroundColor: `${clubDetails.backgroundcolor}`,
             color: `${clubDetails.textcolor}`,
-            minHeight: "200px",
+            maxHeight: "200px",
           }}
         >
           <Grid item xs={4}>
             <img
               alt="club"
+              style={{
+                maxHeight: "200px",
+                padding: "10px",
+                borderRadius: "20px",
+              }}
               src={
                 clubDetails.pictureUrl
                   ? clubDetails.pictureUrl

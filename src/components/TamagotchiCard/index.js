@@ -23,15 +23,17 @@ const TamagotchiCard = ({
         />
       </div>
       <div className="tamagotchiCardInfo">
-        <h2>{name}</h2>
+        <h3>{name}</h3>
         <div className="tamagotchiSpecs">
           <p>Age: {age}YR</p>
           <p>Deaths: {deaths}</p>
+        </div>
+        <div className="tamaevolution">
           <p>Evolution: {evolution}</p>
         </div>
-        <div className="tamagotchiSpecs">
-          <div className="editTamaButton">{btnEdit}</div>
-          <div className="deleteTamaButton">{btnDelete}</div>
+        <div className="tamagotchiButtons">
+          <div>{btnEdit}</div>
+          <div>{btnDelete}</div>
         </div>
       </div>
     </div>
