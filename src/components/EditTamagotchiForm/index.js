@@ -120,6 +120,16 @@ const EditTamagotchiForm = ({
                 />
               </Form.Group>
 
+              <Form.Group controlId="formBasicDeaths">
+                <Form.Label>Deaths</Form.Label>
+                <Form.Control
+                  value={deaths}
+                  onChange={(event) => setDeaths(event.target.value)}
+                  type="number"
+                  required
+                />
+              </Form.Group>
+
               <Form.Group controlId="formBasicAge">
                 <Form.Label>Age</Form.Label>
                 <Form.Control
@@ -131,29 +141,28 @@ const EditTamagotchiForm = ({
                 />
               </Form.Group>
 
-              <Form.Group controlId="formBasicDeaths">
-                <Form.Label>Deaths</Form.Label>
+              <Form.Group controlId="formBasicEvolution">
+                <Form.Label>Evolution</Form.Label>
                 <Form.Control
-                  value={deaths}
-                  onChange={(event) => setDeaths(event.target.value)}
+                  value={evolutionId}
+                  onChange={(event) => setEvolutionId(event.target.value)}
                   type="number"
                   required
                 />
               </Form.Group>
 
               <Form.Group controlId="formBasicVersion">
-                <Form.Label>version</Form.Label>
-                <Form.Control
+                <Form.Label>Version</Form.Label>
+                <Form.Select
                   value={version}
                   onChange={(event) => setVersion(event.target.value)}
-                  type="text"
-                  placeholder="The Original"
-                  required
-                />
+                >
+                  <option>The Original</option>
+                </Form.Select>
               </Form.Group>
 
               <Form.Group controlId="formBasicGeneration">
-                <Form.Label>generation</Form.Label>
+                <Form.Label>Generation</Form.Label>
                 <Form.Control
                   value={generation}
                   onChange={(event) => setGeneration(event.target.value)}
@@ -181,15 +190,6 @@ const EditTamagotchiForm = ({
                 )}
               </div>
 
-              <Form.Group controlId="formBasicEvolution">
-                <Form.Label>evolutionId</Form.Label>
-                <Form.Control
-                  value={evolutionId}
-                  onChange={(event) => setEvolutionId(event.target.value)}
-                  type="number"
-                  required
-                />
-              </Form.Group>
               <br />
               <Button
                 variant="primary"
