@@ -43,14 +43,20 @@ const TamagotchiCards = () => {
                   imageUrl={tamagotchi.imageUrl}
                   age={tamagotchi.age}
                   deaths={tamagotchi.deaths}
+                  generation={tamagotchi.generation}
                   evolution={tamagotchi.evolution.level}
+                  evolutionId={tamagotchi.evolution.id}
                   btnEdit={
-                    <Button
-                      variant="contained"
-                      style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
-                    >
-                      Edit
-                    </Button>
+                    <EditTamagotchiForm
+                      id={id}
+                      nameTama={name}
+                      ageTama={age}
+                      deathsTama={deaths}
+                      versionTama={version}
+                       imageTama={imageUrl}
+                       generationTama={generation}
+                      evolutionIdTama={evolutionId}
+                    />
                   }
                   btnDelete={
                     <Button

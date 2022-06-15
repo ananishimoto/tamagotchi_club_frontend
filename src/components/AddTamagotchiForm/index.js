@@ -7,7 +7,7 @@ import Modal from "@mui/material/Modal";
 import Form from "react-bootstrap/Form";
 import { Button } from "@mui/material";
 import { Col } from "react-bootstrap";
-import { FetchAddTamagotchi } from "../../store/tamagotchi/thunk";
+import { addTamagotchi } from "../../store/tamagotchi/thunk";
 
 const style = {
   position: "absolute",
@@ -42,15 +42,7 @@ const AddTamagotchiForm = () => {
     console.log("hi");
     event.preventDefault();
     dispatch(
-      FetchAddTamagotchi(
-        name,
-        age,
-        deaths,
-        version,
-        generation,
-        image,
-        evolutionId
-      )
+      addTamagotchi(name, age, deaths, version, generation, image, evolutionId)
     );
     setName("");
     setAge("");
@@ -59,6 +51,7 @@ const AddTamagotchiForm = () => {
     setGeneration("");
     setEvolutionId("");
     setImage("");
+    setOpen(false);
   }
 
   //Cloudinary image
@@ -186,7 +179,13 @@ const AddTamagotchiForm = () => {
                   required
                 />
               </Form.Group>
-              <Button variant="primary" type="submit" onClick={submitTamaForm}>
+              <br />
+              <Button
+                variant="primary"
+                type="submit"
+                style={{ backgroundColor: "#bd5487", color: "#e4ed58" }}
+                onClick={submitTamaForm}
+              >
                 Add Tamagotchi
               </Button>
             </Form>
