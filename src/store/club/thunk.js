@@ -1,14 +1,10 @@
 import axios from "axios";
-import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
-import { showMessageWithTimeout } from "../appState/actions";
-import { selectToken } from "../user/selectors";
-import { startLoading } from "../tamagotchi/slice";
+import { appLoading, appDoneLoading } from "../appState/slice";
 import { clubsFetched, ownerClubsFetched } from "./slice";
 
 export async function fetchUserClubs(dispatch, getState) {
   try {
     dispatch(appLoading());
-    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get("http://localhost:4000/club/mine", {
@@ -30,7 +26,6 @@ export async function fetchUserClubs(dispatch, getState) {
 export async function fetchOwnerClubs(dispatch, getState) {
   try {
     dispatch(appLoading());
-    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get(`http://localhost:4000/club/owner`, {
@@ -48,3 +43,35 @@ export async function fetchOwnerClubs(dispatch, getState) {
     dispatch(appDoneLoading());
   }
 }
+
+export const updateClub =
+  (id, name, description, pictureUrl, backgroundcolor, textcolor, privated) =>
+  async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+      dispatch(appLoading());
+      const response = await axios.patch(
+        `http://localhost:4000/club/${id}`,
+        {
+          name,
+          description,
+          pictureUrl,
+          backgroundcolor,
+          textcolor,
+          privated,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // dispatch(editClub(response.data));
+      // we don't need action, just load owner clubs again
+      dispatch(fetchOwnerClubs);
+      dispatch(appDoneLoading());
+    } catch (error) {
+      console.log(error.message);
+      dispatch(appDoneLoading());
+    }
+  };

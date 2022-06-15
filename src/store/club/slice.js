@@ -21,10 +21,13 @@ export const clubSlice = createSlice({
       state.owner = action.payload;
       state.loading = false;
     },
+    addClub: (state, action) => {
+      state.list = [...state.list, action.payload];
+    },
   },
 });
 
-export const { startLoading, clubsFetched, ownerClubsFetched } =
+export const { startLoading, clubsFetched, ownerClubsFetched, addClub } =
   clubSlice.actions;
 
 export default clubSlice.reducer;
