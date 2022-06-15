@@ -25,7 +25,6 @@ const Club = () => {
       <div className="clubbanner" key={clubDetails.id}>
         <Grid
           container
-          spacing={2}
           alignItems="center"
           pl={2}
           style={{
@@ -59,6 +58,7 @@ const Club = () => {
         }}
       >
         <h2>Club stats</h2>
+        <p>Total deaths:</p>
       </div>
       <div
         className="clubsection"
