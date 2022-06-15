@@ -11,6 +11,7 @@ const TamagotchiCard = ({
   evolution,
   evolutionId,
   imageUrl,
+  btnEdit,
   btnDelete,
 }) => {
   return (
