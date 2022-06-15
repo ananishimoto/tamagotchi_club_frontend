@@ -5,12 +5,12 @@ import { Box, Grid } from "@mui/material";
 import "./style.css";
 
 import { Loading, ClubCard, EditClubForm } from "../../components";
-import { selectOwnerClubs } from "../../store/club/selector";
+import { selectClubOwner } from "../../store/club/selector";
 import { fetchOwnerClubs } from "../../store/club/thunk";
 
 const ClubOwnerCards = () => {
   const dispatch = useDispatch();
-  const clubs = useSelector(selectOwnerClubs);
+  const clubs = useSelector(selectClubOwner);
 
   useEffect(() => {
     dispatch(fetchOwnerClubs);
