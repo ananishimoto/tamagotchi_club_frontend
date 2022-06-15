@@ -7,6 +7,7 @@ import { Grid, Modal, Button, Typography, Box, Divider } from "@mui/material";
 import { selectClubs, selectClubMembers } from "../../store/club/selector";
 import { fetchClub } from "../../store/club/thunk";
 import { Loading } from "../../components";
+import { MemberCards } from "./membercards";
 
 const Club = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,7 @@ const Club = () => {
 
   return clubDetails ? (
     <div className="clubpage">
-      <div className="clubbanner">
+      <div className="clubbanner" key={clubDetails.id}>
         <Grid
           container
           spacing={2}
@@ -50,11 +51,26 @@ const Club = () => {
           </Grid>
         </Grid>
       </div>
-      <div className="clubmembers">
-        Members:
-        {clubMembers.map((member) => {
-          return member.name;
-        })}
+      <div
+        className="clubsection"
+        style={{
+          backgroundColor: `${clubDetails.backgroundcolor}88`,
+          color: `${clubDetails.textcolor}`,
+        }}
+      >
+        <h2>Club stats</h2>
+      </div>
+      <div
+        className="clubsection"
+        style={{
+          backgroundColor: `${clubDetails.backgroundcolor}88`,
+          color: `${clubDetails.textcolor}`,
+        }}
+      >
+        <h2>Members</h2>
+        <div>
+          <MemberCards />
+        </div>
       </div>
     </div>
   ) : (
