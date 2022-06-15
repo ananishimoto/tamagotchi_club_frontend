@@ -1,16 +1,22 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { Box, Grid } from "@mui/material";
+import { Button } from "@mui/material";
 
 import "./style.css";
 
 import { Loading, ClubCard, EditClubForm } from "../../components";
 import { selectClubOwner } from "../../store/club/selector";
-import { fetchOwnerClubs } from "../../store/club/thunk";
+import { deleteClub, fetchOwnerClubs } from "../../store/club/thunk";
 
 const ClubOwnerCards = () => {
   const dispatch = useDispatch();
   const clubs = useSelector(selectClubOwner);
+  console.log("clubs form", clubs);
+
+  const onClickDelete = (id) => {
+    dispatch(deleteClub(id));
+  };
 
   useEffect(() => {
     dispatch(fetchOwnerClubs);
@@ -38,6 +44,15 @@ const ClubOwnerCards = () => {
                       clubText={club.textcolor}
                       // privated={club.private}
                     />
+                  }
+                  btnDelete={
+                    <Button
+                      style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
+                      variant="contained"
+                      onClick={() => onClickDelete(club.id)}
+                    >
+                      Delete
+                    </Button>
                   }
                 />
               </Grid>

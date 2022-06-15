@@ -3,6 +3,7 @@ import { appLoading, appDoneLoading } from "../appState/slice";
 import {
   clubFetched,
   clubsFetched,
+  deleteUserClub,
   ownerClubsFetched,
   publicClubsFetched,
 } from "./slice";
@@ -113,3 +114,24 @@ export function fetchClub(id) {
     }
   };
 }
+
+export const deleteClub = (clubId) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().user;
+    dispatch(appLoading());
+    const userClub = await axios.delete(
+      `http://localhost:4000/club/${clubId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("deleted", userClub.data);
+    dispatch(deleteUserClub(clubId));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    console.log(error.message);
+    dispatch(appDoneLoading());
+  }
+};
