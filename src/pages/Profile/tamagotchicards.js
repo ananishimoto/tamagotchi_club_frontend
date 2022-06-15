@@ -46,6 +46,18 @@ const TamagotchiCards = () => {
                   generation={tamagotchi.generation}
                   evolution={tamagotchi.evolution.level}
                   evolutionId={tamagotchi.evolution.id}
+                  btnEdit={
+                     <EditTamagotchiForm
+            id={tamagotchi.id}
+            nameTama={tamagotchi.name}
+            ageTama={tamagotchi.age}
+            deathsTama={tamagotchi.deaths}
+            versionTama={tamagotchi.version}
+            imageTama={tamagotchi.imageUrl}
+            generationTama={tamagotchi.generation}
+            evolutionIdTama={tamagotchi.evolutionId}
+          />
+                  }
                   btnDelete={
                     <Button
                       variant="contained"
