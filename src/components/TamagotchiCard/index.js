@@ -31,17 +31,8 @@ const TamagotchiCard = ({
           <p>Evolution: {evolution}</p>
         </div>
         <div className="tamagotchiSpecs">
-          <EditTamagotchiForm
-            id={id}
-            nameTama={name}
-            ageTama={age}
-            deathsTama={deaths}
-            versionTama={version}
-            imageTama={imageUrl}
-            generationTama={generation}
-            evolutionIdTama={evolutionId}
-          />
-          <div className="deleteButton">{btnDelete}</div>
+          <div className="editTamaButton">{btnEdit}</div>
+          <div className="deleteTamaButton">{btnDelete}</div>
         </div>
       </div>
     </div>
