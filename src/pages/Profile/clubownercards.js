@@ -1,9 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { Box, Grid, Button } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 
 import "./style.css";
-import { Loading, ClubCard } from "../../components";
+
+import { Loading, ClubCard, EditClubForm } from "../../components";
 import { selectClubOwner } from "../../store/club/selector";
 import { fetchOwnerClubs } from "../../store/club/thunk";
 
@@ -28,12 +29,15 @@ const ClubOwnerCards = () => {
                   pictureUrl={club.pictureUrl}
                   description={club.description}
                   btnEdit={
-                    <Button
-                      variant="contained"
-                      style={{ backgroundColor: "#1c1237", color: "#005f92" }}
-                    >
-                      Edit
-                    </Button>
+                    <EditClubForm
+                      id={club.id}
+                      clubName={club.name}
+                      clubPictureUrl={club.pictureUrl}
+                      clubDescription={club.description}
+                      clubBackground={club.backgroundcolor}
+                      clubText={club.textcolor}
+                      // privated={club.private}
+                    />
                   }
                 />
               </Grid>
