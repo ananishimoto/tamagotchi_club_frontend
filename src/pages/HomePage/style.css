@@ -1,0 +1,17 @@
+.publicClubsSection {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #e4ed5888;
+}
+
+.publicClubsTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #e4ed58;
+    color: #f2944e;
+    border-radius: 20px;
+}

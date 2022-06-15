@@ -11,4 +11,4 @@ export * from "./ClubCard";
 export * from "./EditUserForm";
 export * from "./HomePageMessage";
 export * from "./MemberCard";
-
+export * from "./EditUserForm";

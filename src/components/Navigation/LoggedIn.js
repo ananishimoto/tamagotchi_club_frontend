@@ -12,6 +12,7 @@ import {
 import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import { selectUser } from "../../store/user/selectors";
 import Nav from "react-bootstrap/Nav";
+import { EditUserInfoForm } from "../../components";
 
 const theme = createTheme({
   palette: {
@@ -36,6 +37,9 @@ export default function LoggedIn() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  // const [open, setOpen] = React.useState(false);
+  // const handleOpen = () => setOpen(true);
 
   return (
     <div className="loggedin">
@@ -83,7 +87,7 @@ export default function LoggedIn() {
             Profile page
           </Link>
         </MenuItem>
-        <MenuItem onClick={handleClose}>Edit profile</MenuItem>
+        <MenuItem onClick={EditUserInfoForm}>Edit profile</MenuItem>
       </Menu>
     </div>
   );
