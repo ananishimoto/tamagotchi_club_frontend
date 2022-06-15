@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { Box, Grid } from "@mui/material";
 
 import "./style.css";
+
 import { Loading, ClubCard, EditClubForm } from "../../components";
 import { selectOwnerClubs } from "../../store/club/selector";
 import { fetchOwnerClubs } from "../../store/club/thunk";
@@ -10,7 +11,6 @@ import { fetchOwnerClubs } from "../../store/club/thunk";
 const ClubOwnerCards = () => {
   const dispatch = useDispatch();
   const clubs = useSelector(selectOwnerClubs);
-  console.log("clubs", clubs);
 
   useEffect(() => {
     dispatch(fetchOwnerClubs);

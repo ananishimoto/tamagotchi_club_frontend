@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Box, Grid, Button } from "@mui/material";
 
 import "./style.css";
-import { TamagotchiCard, Loading } from "../../components";
+import { TamagotchiCard, Loading, EditTamagotchiForm } from "../../components";
 import { selectTamagotchis } from "../../store/tamagotchi/selector";
 import {
   deleteUserTamagotchi,
@@ -43,14 +43,20 @@ const TamagotchiCards = () => {
                   imageUrl={tamagotchi.imageUrl}
                   age={tamagotchi.age}
                   deaths={tamagotchi.deaths}
+                  generation={tamagotchi.generation}
                   evolution={tamagotchi.evolution.level}
+                  evolutionId={tamagotchi.evolution.id}
                   btnEdit={
-                    <Button
-                      variant="contained"
-                      style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
-                    >
-                      Edit
-                    </Button>
+                    <EditTamagotchiForm
+                      id={tamagotchi.id}
+                      nameTama={tamagotchi.name}
+                      ageTama={tamagotchi.age}
+                      deathsTama={tamagotchi.deaths}
+                      versionTama={tamagotchi.version}
+                      imageTama={tamagotchi.imageUrl}
+                      generationTama={tamagotchi.generation}
+                      evolutionIdTama={tamagotchi.evolutionId}
+                    />
                   }
                   btnDelete={
                     <Button

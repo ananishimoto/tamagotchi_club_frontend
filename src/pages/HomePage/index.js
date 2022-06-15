@@ -1,8 +1,16 @@
-import { AddTamagotchiForm } from "../../components/AddTamagotchiForm";
+import { HomePageMessage } from "../../components";
+import { HomeClubCards } from "./homeClubCards";
+
 import "./style.css";
 
 const HomePage = () => {
-  return <div>This is the homepage</div>;
+  return (
+    <div>
+      <HomePageMessage />
+      <h2>Our members Clubs!</h2>
+      <HomeClubCards />
+    </div>
+  );
 };
 
 export { HomePage };
