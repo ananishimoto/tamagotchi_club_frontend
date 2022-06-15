@@ -1,8 +1,12 @@
 import axios from "axios";
 import { appLoading, appDoneLoading } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
-import { clubFetched, clubsFetched, ownerClubsFetched, publicClubsFetched } from "./slice";
-
+import {
+  clubFetched,
+  clubsFetched,
+  ownerClubsFetched,
+  publicClubsFetched,
+} from "./slice";
 
 export async function fetchUserClubs(dispatch, getState) {
   try {
@@ -60,6 +64,7 @@ export async function fecthNonPrivateClubs(dispatch, getState) {
     console.log(e.message);
     dispatch(appDoneLoading());
   }
+}
 
 export function fetchClub(id) {
   return async function (dispatch, getState) {
