@@ -5,7 +5,9 @@ const TamagotchiCard = ({
   name,
   age,
   deaths,
+  generation,
   evolution,
+  evolutionId,
   imageUrl,
   btnEdit,
   btnDelete,
@@ -28,8 +30,8 @@ const TamagotchiCard = ({
           <p>Evolution: {evolution}</p>
         </div>
         <div className="tamagotchiSpecs">
-          <div className="editButton">{btnEdit}</div>
-          <div className="deleteButton">{btnDelete}</div>
+          <div className="editTamaButton">{btnEdit}</div>
+          <div className="deleteTamaButton">{btnDelete}</div>
         </div>
       </div>
     </div>

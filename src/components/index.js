@@ -10,3 +10,5 @@ export * from "./AddClubForm";
 export * from "./ClubCard";
 export * from "./EditUserForm";
 export * from "./HomePageMessage";
+export * from "./MemberCard";
+
