@@ -9,3 +9,4 @@ export * from "./EditClubForm";
 export * from "./AddClubForm";
 export * from "./ClubCard";
 export * from "./EditUserForm";
+export * from "./HomePageMessage";
