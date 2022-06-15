@@ -1,71 +1,71 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
 
-import "./style.css";
+// import "./style.css";
 
-import { useDispatch } from "react-redux";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
-import Modal from "@mui/material/Modal";
-import Form from "react-bootstrap/Form";
-import { Button } from "@mui/material";
-import { Col } from "react-bootstrap";
-// import { editTamaForm } from "../../store/tamagotchi/thunk";
+// import { useDispatch } from "react-redux";
+// import Box from "@mui/material/Box";
+// import Typography from "@mui/material/Typography";
+// import Modal from "@mui/material/Modal";
+// import Form from "react-bootstrap/Form";
+// import { Button } from "@mui/material";
+// import { Col } from "react-bootstrap";
+// // import { editTamaForm } from "../../store/tamagotchi/thunk";
 
-const style = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: 550,
-  bgcolor: "#f2944e",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-  maxHeight: "90%",
-  overflow: "auto",
-  borderRadius: "20px",
-};
+// const style = {
+//   position: "absolute",
+//   top: "50%",
+//   left: "50%",
+//   transform: "translate(-50%, -50%)",
+//   width: 550,
+//   bgcolor: "#f2944e",
+//   border: "2px solid #000",
+//   boxShadow: 24,
+//   p: 4,
+//   maxHeight: "90%",
+//   overflow: "auto",
+//   borderRadius: "20px",
+// };
 
-const EditUserInfoForm = (event) => {
+// const EditUserInfoForm = (event) => {
 
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [photoUrl, setPhotoUrl] = useState("");
-
-  return alert("Test");
-};
-
-// const EditUserForm = ({
-//   id,
-//   nameTama,
-//   ageTama,
-//   deathsTama,
-//   versionTama,
-//   generationTama,
-//   imageTama,
-//   evolutionIdTama,
-// }) => {
 //   const [open, setOpen] = React.useState(false);
 //   const handleOpen = () => setOpen(true);
 //   const handleClose = () => setOpen(false);
 
-//   const [name, setName] = useState(nameTama);
-//   const [age, setAge] = useState(ageTama);
-//   const [deaths, setDeaths] = useState(deathsTama);
-//   const [version, setVersion] = useState(versionTama);
-//   const [generation, setGeneration] = useState(generationTama);
-//   const [evolutionId, setEvolutionId] = useState(evolutionIdTama);
+//   const [name, setName] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [password, setPassword] = useState("");
+//   const [photoUrl, setPhotoUrl] = useState("");
 
-//   const dispatch = useDispatch();
+//   return alert("Test");
+// };
 
-};
+// // const EditUserForm = ({
+// //   id,
+// //   nameTama,
+// //   ageTama,
+// //   deathsTama,
+// //   versionTama,
+// //   generationTama,
+// //   imageTama,
+// //   evolutionIdTama,
+// // }) => {
+// //   const [open, setOpen] = React.useState(false);
+// //   const handleOpen = () => setOpen(true);
+// //   const handleClose = () => setOpen(false);
 
-export { EditUserInfoForm };
+// //   const [name, setName] = useState(nameTama);
+// //   const [age, setAge] = useState(ageTama);
+// //   const [deaths, setDeaths] = useState(deathsTama);
+// //   const [version, setVersion] = useState(versionTama);
+// //   const [generation, setGeneration] = useState(generationTama);
+// //   const [evolutionId, setEvolutionId] = useState(evolutionIdTama);
+
+// //   const dispatch = useDispatch();
+
+// };
+
+// export { EditUserInfoForm };
 //     console.log("hi");
 //     event.preventDefault();
 //     dispatch(
