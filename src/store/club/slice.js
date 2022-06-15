@@ -32,6 +32,11 @@ export const clubSlice = createSlice({
       state.list = action.payload;
       state.loading = false;
     },
+    deleteUserClub: (state, action) => {
+      const clubId = action.payload;
+      state.owner = state.owner.filter((club) => club.id !== clubId);
+      state.loading = false;
+    },
   },
 });
 
@@ -42,6 +47,7 @@ export const {
   ownerClubsFetched,
   publicClubsFetched,
   addClub,
+  deleteUserClub,
 } = clubSlice.actions;
 
 export default clubSlice.reducer;
