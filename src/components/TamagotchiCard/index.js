@@ -1,6 +1,4 @@
 import "./style.css";
-import { EditTamagotchiForm } from "../EditTamagotchiForm";
-import { version } from "react";
 
 const TamagotchiCard = ({
   id,

@@ -1,4 +1,3 @@
-import { AddTamagotchiForm } from "../../components/AddTamagotchiForm";
 import "./style.css";
 
 const HomePage = () => {

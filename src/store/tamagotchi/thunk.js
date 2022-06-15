@@ -1,7 +1,6 @@
 import axios from "axios";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
-import { selectToken } from "../user/selectors";
 import {
   deleteTamagotchi,
   startLoading,
@@ -9,10 +8,10 @@ import {
   addTamagotchiSuccess,
 } from "./slice";
 
+//Fetch all tamagotchi's of one user
 export async function fetchUserTamagotchis(dispatch, getState) {
   try {
     dispatch(appLoading());
-    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get("http://localhost:4000/tamagotchi/mine", {
@@ -30,8 +29,8 @@ export async function fetchUserTamagotchis(dispatch, getState) {
     dispatch(appDoneLoading());
   }
 }
-//add tamagotchi
 
+//Add tamagotchi
 export function addTamagotchi(
   name,
   age,
@@ -64,6 +63,15 @@ export function addTamagotchi(
       console.log(newtama.data);
       const createTamagotchi = newtama.data;
       dispatch(addTamagotchiSuccess(createTamagotchi));
+      dispatch(
+        showMessageWithTimeout(
+          "succes",
+          false,
+          "added tamagotchi successfull",
+          3000
+        )
+      );
+      dispatch(appDoneLoading());
     } catch (error) {
       console.log(error.message);
     }
@@ -103,6 +111,14 @@ export const editTamaForm = (
       );
 
       dispatch(fetchUserTamagotchis);
+      dispatch(
+        showMessageWithTimeout(
+          "succes",
+          false,
+          "tamagotchi edit successfull",
+          3000
+        )
+      );
       dispatch(appDoneLoading());
     } catch (error) {
       if (error.response) {
@@ -129,7 +145,7 @@ export const editTamaForm = (
   };
 };
 
-//delete tamagotchi
+//Delete tamagotchi
 export const deleteUserTamagotchi = (tamaId) => async (dispatch, getState) => {
   try {
     const { token } = getState().user;
@@ -144,6 +160,14 @@ export const deleteUserTamagotchi = (tamaId) => async (dispatch, getState) => {
     );
     console.log("delete thunk", userTama.data);
     dispatch(deleteTamagotchi(tamaId));
+    dispatch(
+      showMessageWithTimeout(
+        "succes",
+        false,
+        "delete tamagotchi successfull",
+        3000
+      )
+    );
     dispatch(appDoneLoading());
   } catch (error) {
     console.log(error.message);

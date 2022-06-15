@@ -1,14 +1,11 @@
 import axios from "axios";
-import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
+import { appLoading, appDoneLoading } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
-import { selectToken } from "../user/selectors";
-import { startLoading } from "../tamagotchi/slice";
-import { clubsFetched, ownerClubsFetched } from "./slice";
+import { clubFetched, clubsFetched, ownerClubsFetched } from "./slice";
 
 export async function fetchUserClubs(dispatch, getState) {
   try {
     dispatch(appLoading());
-    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get("http://localhost:4000/club/mine", {
@@ -30,7 +27,6 @@ export async function fetchUserClubs(dispatch, getState) {
 export async function fetchOwnerClubs(dispatch, getState) {
   try {
     dispatch(appLoading());
-    // dispatch(startLoading());
     const { token } = getState().user;
 
     const response = await axios.get(`http://localhost:4000/club/owner`, {
@@ -47,4 +43,21 @@ export async function fetchOwnerClubs(dispatch, getState) {
     console.log(e.message);
     dispatch(appDoneLoading());
   }
+}
+
+export function fetchClub(id) {
+  return async function (dispatch, getState) {
+    try {
+      dispatch(appLoading());
+      const response = await axios.get(`http://localhost:4000/club/${id}`);
+      console.log("thunk club response", response.data);
+      const clubs = response.data;
+
+      dispatch(clubFetched(clubs));
+      dispatch(appDoneLoading());
+    } catch (e) {
+      console.log(e.message);
+      dispatch(appDoneLoading());
+    }
+  };
 }
