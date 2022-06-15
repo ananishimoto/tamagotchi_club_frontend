@@ -8,15 +8,15 @@ import { TamagotchiCards } from "./tamagotchicards";
 const Profile = () => {
   return (
     <div className="profilepage">
-      <div className="tamagotchiOverview">
-        <div className="tamagotchiTitle">
+      <div className="profilesection">
+        <div className="profiletitle">
           <h1>My Tamagotchi's</h1>
           <AddTamagotchiForm />
         </div>
         <TamagotchiCards />
       </div>
-      <div className="clubmemberOverview">
-        <div className="tamagotchiTitle">
+      <div className="profilesection">
+        <div className="profiletitle">
           <h1>Clubs</h1>
           <Button
             variant="contained"
@@ -27,8 +27,8 @@ const Profile = () => {
         </div>
         <ClubCards />
       </div>
-      <div className="clubownerOverview">
-        <div className="tamagotchiTitle">
+      <div className="profilesection">
+        <div className="profiletitle">
           <h1>My Clubs</h1>
           <Button
             variant="contained"
