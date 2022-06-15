@@ -7,8 +7,12 @@ const HomePage = () => {
   return (
     <div>
       <HomePageMessage />
-      <h2>Our members Clubs!</h2>
-      <HomeClubCards />
+      <div className="publicClubsSection">
+        <div className="publicClubsTitle">
+          <h2>Our members Clubs!</h2>
+        </div>
+        <HomeClubCards />
+      </div>
     </div>
   );
 };
