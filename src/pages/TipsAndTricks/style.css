@@ -1,47 +1,53 @@
 .tama-img {
-    -webkit-animation: mover 0.7s infinite  alternate;
-    animation: mover 0.7s infinite  alternate;
-    width: 200px;
-    height: 200px;
+  -webkit-animation: mover 0.7s infinite alternate;
+  animation: mover 0.7s infinite alternate;
+  width: 200px;
+  height: 200px;
 }
 @-webkit-keyframes mover {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(50px); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50px);
+  }
 }
 @keyframes mover {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(50px); }
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(50px);
+  }
 }
 
-.tipsCard{
-    padding: 30px;
-    margin: 10px auto;
-    width:  700px;
-    background-color: rgba(255, 255, 255, 0.268);
-    border-radius: 20px;
+.tipsCard {
+  padding: 30px;
+  margin: 10px auto;
+  width: 700px;
+  background-color: rgba(255, 255, 255, 0.268);
+  border-radius: 20px;
 }
 
-.gif{
-    width: 100px;
-    height: 100px;
-  
+.gif {
+  width: 100px;
+  height: 100px;
 }
-.hero{
-    text-align: center;
-    color: #f3ec78;
-    margin-top: -82px;
-
+.hero {
+  text-align: center;
+  color: #f3ec78;
+  margin-top: -140px;
 }
-.footer{
-    color: #f3ec78;
-    padding: 30px;
-    margin: 10px auto;
-    width:  700px;
-    background-color: rgba(255, 255, 255, 0.268);
-    border-radius: 20px;
+.footer {
+  color: #f3ec78;
+  padding: 30px;
+  margin: 10px auto;
+  width: 700px;
+  background-color: rgba(255, 255, 255, 0.268);
+  border-radius: 20px;
   font-size: 35px;
   text-align: center;
 }
-.tama-animation{
-    display: inline-block;
+.tama-animation {
+  display: inline-block;
 }
