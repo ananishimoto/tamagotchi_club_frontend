@@ -6,6 +6,9 @@ import "./style.css";
 const HomePage = () => {
   return (
     <div>
+      <div className="tama-animation">
+        <img className="tama-img" src="/assets/tama.png" alt="" />
+      </div>
       <HomePageMessage />
       <div className="publicClubsSection">
         <div className="publicClubsTitle">
