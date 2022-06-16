@@ -8,6 +8,7 @@ import { selectClubs, selectClubMembers } from "../../store/club/selector";
 import { fetchClub } from "../../store/club/thunk";
 import { Loading } from "../../components";
 import { MemberCards } from "./membercards";
+import { TamagotchiClubCards } from "./tamagotchicards";
 
 const Club = () => {
   const dispatch = useDispatch();
@@ -64,6 +65,18 @@ const Club = () => {
       >
         <h2>Club stats</h2>
         <p>Total deaths:</p>
+      </div>
+      <div
+        className="clubsection"
+        style={{
+          backgroundColor: `${clubDetails.backgroundcolor}88`,
+          color: `${clubDetails.textcolor}`,
+        }}
+      >
+        <h2>Tamagotchis</h2>
+        <div>
+          <TamagotchiClubCards />
+        </div>
       </div>
       <div
         className="clubsection"

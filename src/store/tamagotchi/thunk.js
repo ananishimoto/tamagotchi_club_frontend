@@ -8,6 +8,22 @@ import {
   addTamagotchiSuccess,
 } from "./slice";
 
+//Fetch all tamagotchi's
+export async function fetchTamagotchis(dispatch, getState) {
+  try {
+    dispatch(appLoading());
+    const response = await axios.get("http://localhost:4000/tamagotchi");
+    console.log("thunk tamagotchi response", response.data);
+    const tamagotchis = response.data;
+
+    dispatch(tamagotchisFetched(tamagotchis));
+    dispatch(appDoneLoading());
+  } catch (e) {
+    console.log(e.message);
+    dispatch(appDoneLoading());
+  }
+}
+
 //Fetch all tamagotchi's of one user
 export async function fetchUserTamagotchis(dispatch, getState) {
   try {

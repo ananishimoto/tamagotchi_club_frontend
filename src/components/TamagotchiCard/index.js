@@ -13,6 +13,7 @@ const TamagotchiCard = ({
   imageUrl,
   btnEdit,
   btnDelete,
+  member,
 }) => {
   return (
     <div className="tamagotchiCard" key={id}>
@@ -49,6 +50,7 @@ const TamagotchiCard = ({
           <div>{btnEdit}</div>
           <div>{btnDelete}</div>
         </div>
+        <div>{member}</div>
       </div>
     </div>
   );
