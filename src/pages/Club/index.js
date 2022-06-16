@@ -26,9 +26,22 @@ const Club = () => {
   }
 
   const age = tamagotchis.map((tamagotchi) => tamagotchi.age);
-  console.log("age", age);
   const highestage = Math.max(...age);
-  console.log(highestage);
+
+  const evolution = tamagotchis.map((tamagotchi) => tamagotchi.evolution.id);
+  console.log("evolution", evolution);
+  const highestevolution = Math.max(...evolution);
+  console.log(highestevolution);
+  const n = highestevolution;
+  console.log(n);
+  const hearts = [...Array(n)].map(() => (
+    <img
+      src="https://i.pinimg.com/originals/df/b0/b6/dfb0b609d5324e967c35280436a4f22b.png"
+      alt="hearts"
+      style={{ maxHeight: "30px", maxWidth: "30px" }}
+      loading="lazy"
+    />
+  ));
 
   useEffect(() => {
     dispatch(fetchClub(routeParams.id));
@@ -78,6 +91,7 @@ const Club = () => {
         <h2 style={{ color: `${clubDetails.textcolor}` }}>Club stats</h2>
         <p>Total deaths: {deathsum}</p>
         <p>Highest age: {highestage} YR</p>
+        <p>Best care: {hearts}</p>
       </div>
       <div
         className="clubsection"
