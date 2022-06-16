@@ -1,5 +1,6 @@
 import axios from "axios";
 import { appLoading, appDoneLoading } from "../appState/slice";
+import { tamagotchisFetched } from "../tamagotchi/slice";
 import {
   clubFetched,
   clubsFetched,
@@ -7,6 +8,26 @@ import {
   ownerClubsFetched,
   publicClubsFetched,
 } from "./slice";
+
+export async function fetchClubTamagotchis(dispatch, getState) {
+  try {
+    dispatch(appLoading());
+    const members = getState().club.list.users;
+    console.log("members", members[0].id);
+
+    const response = await axios.get("http://localhost:4000/tamagotchi", {
+      where: { userId: members.id },
+    });
+    console.log("thunk club tama response", response.data);
+    const clubtamagotchis = response.data;
+
+    dispatch(tamagotchisFetched(clubtamagotchis));
+    dispatch(appDoneLoading());
+  } catch (e) {
+    console.log(e.message);
+    dispatch(appDoneLoading());
+  }
+}
 
 export async function fetchUserClubs(dispatch, getState) {
   try {

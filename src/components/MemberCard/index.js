@@ -15,15 +15,15 @@ const MemberCard = ({ id, name, photoUrl, props }) => {
         </div>
         <h2>{name}</h2>
       </div>
-      <TamagotchiCard
-      // id={props.id}
-      // name={props.name}
-      // age={props.age}
-      // deaths={props.deaths}
-      // generation={props.generation}
-      // imageUrl={props.imageUrl}
-      // evolution={props.evolution.level}
-      />
+      {/* <TamagotchiCard
+      id={props.id}
+      name={props.name}
+      age={props.age}
+      deaths={props.deaths}
+      generation={props.generation}
+      imageUrl={props.imageUrl}
+      evolution={props.evolution.level}
+      /> */}
     </div>
   );
 };
