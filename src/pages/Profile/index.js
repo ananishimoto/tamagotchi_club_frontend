@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import "./style.css";
 import { AddClubForm, AddTamagotchiForm } from "../../components";
 import { ClubCards } from "./clubcards";
@@ -18,12 +17,6 @@ const Profile = () => {
       <div className="profilesection">
         <div className="profiletitle">
           <h1>Clubs</h1>
-          <Button
-            variant="contained"
-            style={{ backgroundColor: "#f2944e", color: "#e4ed58" }}
-          >
-            Add new Club
-          </Button>
         </div>
         <ClubCards />
       </div>
