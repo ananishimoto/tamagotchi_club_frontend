@@ -86,7 +86,11 @@ export default function LoggedIn(props) {
         <MenuItem onClick={() => setEdit(true)}>Edit profile</MenuItem>
         <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
-      <EditUserInfoForm handleFormClose={handleFormClose} open={edit} />
+      <EditUserInfoForm
+        handleFormClose={handleFormClose}
+        open={edit}
+        close={() => setEdit(false)}
+      />
     </div>
   );
 }

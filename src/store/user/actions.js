@@ -124,18 +124,17 @@ export const getUserWithStoredToken = () => {
 
 // Update user information
 
-export const updateProfile = ({ name, email, userId }) => {
+export const updateProfile = ({ name, email, photoUrl, userId, close }) => {
   return async (dispatch, getState) => {
-    console.log("user update thunk", name, email);
     dispatch(appLoading());
     try {
       const { token } = getState().user;
-
       const updatedUser = await axios.patch(
         `${apiUrl}/user/${userId}`,
         {
           name,
           email,
+          photoUrl,
         },
         {
           headers: {
@@ -144,9 +143,11 @@ export const updateProfile = ({ name, email, userId }) => {
         }
       );
 
-      console.log("test", updatedUser.data);
-      dispatch(updateUserProfile());
+      console.log("here", updatedUser);
+      // dispatch(loginSuccess());
+      dispatch(updateUserProfile(updatedUser.data));
       dispatch(appDoneLoading());
+      close();
     } catch (error) {
       if (error.response) {
         console.log("what is going on");
@@ -158,12 +159,12 @@ export const updateProfile = ({ name, email, userId }) => {
           })
         );
       } else {
-        console.log("what is going on, but on else");
+        console.log("what is going on, but on else", error.message);
         dispatch(
           setMessage({
             variant: "danger",
             dismissable: true,
-            text: error.response.data.message,
+            // text: error.response.data.message,
           })
         );
       }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./style.css";
 
@@ -31,13 +31,20 @@ export default function EditUserInfoForm(props) {
   const { open, handleFormClose } = props;
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  console.log("user", user);
 
-  const [name, setName] = useState(user?.name);
-  const [email, setEmail] = useState(user?.email);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (user) {
+      setName(user.name);
+      setEmail(user.email);
+      setPhotoUrl(user.photoUrl);
+    }
+  }, [user]);
 
   // Cloudinary Image
-  const [photoUrl, setPhotoUrl] = useState(user?.photoUrl);
+  const [photoUrl, setPhotoUrl] = useState("");
 
   const uploadImage = async (e) => {
     const files = e.target.files;
@@ -58,10 +65,11 @@ export default function EditUserInfoForm(props) {
   };
 
   const sendUpdateInfo = (event) => {
-    console.log("hi from submit user info", name, email);
     event.preventDefault();
     const userId = user.id;
-    dispatch(updateProfile({ name, email, userId }));
+    dispatch(
+      updateProfile({ name, email, photoUrl, userId, close: props.close })
+    );
   };
 
   return (
