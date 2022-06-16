@@ -4,6 +4,10 @@ body {
   font-family: "VT323";
 }
 
+html {
+  font-family: "VT323";
+}
+
 .background {
   position: fixed;
   top: 0px;

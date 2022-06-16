@@ -9,6 +9,7 @@ import { fetchClub } from "../../store/club/thunk";
 import { Loading } from "../../components";
 import { MemberCards } from "./membercards";
 import { TamagotchiClubCards } from "./tamagotchicards";
+import { selectTamagotchis } from "../../store/tamagotchi/selector";
 
 const Club = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,18 @@ const Club = () => {
   const clubDetails = useSelector(selectClubs);
   const clubMembers = useSelector(selectClubMembers);
   console.log("club members", clubMembers);
+  const tamagotchis = useSelector(selectTamagotchis);
+
+  const deaths = tamagotchis.map((tamagotchi) => tamagotchi.deaths);
+  let deathsum = 0;
+  for (let i = 0; i < deaths.length; i++) {
+    deathsum += deaths[i];
+  }
+
+  const age = tamagotchis.map((tamagotchi) => tamagotchi.age);
+  console.log("age", age);
+  const highestage = Math.max(...age);
+  console.log(highestage);
 
   useEffect(() => {
     dispatch(fetchClub(routeParams.id));
@@ -60,11 +73,11 @@ const Club = () => {
         className="clubsection"
         style={{
           backgroundColor: `${clubDetails.backgroundcolor}88`,
-          color: `${clubDetails.textcolor}`,
         }}
       >
-        <h2>Club stats</h2>
-        <p>Total deaths:</p>
+        <h2 style={{ color: `${clubDetails.textcolor}` }}>Club stats</h2>
+        <p>Total deaths: {deathsum}</p>
+        <p>Highest age: {highestage} YR</p>
       </div>
       <div
         className="clubsection"
@@ -78,7 +91,7 @@ const Club = () => {
           <TamagotchiClubCards />
         </div>
       </div>
-      <div
+      {/* <div
         className="clubsection"
         style={{
           backgroundColor: `${clubDetails.backgroundcolor}88`,
@@ -89,7 +102,7 @@ const Club = () => {
         <div>
           <MemberCards />
         </div>
-      </div>
+      </div> */}
     </div>
   ) : (
     <Loading />

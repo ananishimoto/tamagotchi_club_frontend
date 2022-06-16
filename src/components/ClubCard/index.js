@@ -15,7 +15,7 @@ const ClubCard = ({
         <img src={pictureUrl} alt={name} className="clubImage" loading="lazy" />
       </div>
       <div className="clubCardInfo">
-        <Link href={`/club/${id}`} color="inherit">
+        <Link href={`/club/${id}`} color="inherit" className="custom-link">
           <h2>{name}</h2>
         </Link>
         <p>{description}</p>
