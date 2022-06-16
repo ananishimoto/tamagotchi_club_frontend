@@ -26,33 +26,36 @@ const ClubOwnerCards = () => {
     <div className="tamagotchicardspage">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          {clubs.map((club) => {
+          {clubs?.map((club) => {
             return (
               <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={club.id}>
                 <ClubCard
-                  id={club.id}
-                  name={club.name}
-                  pictureUrl={club.pictureUrl}
-                  description={club.description}
+                  id={club?.id}
+                  name={club?.name}
+                  pictureUrl={club?.pictureUrl}
+                  description={club?.description}
                   btnEdit={
                     <EditClubForm
-                      id={club.id}
-                      clubName={club.name}
-                      clubPictureUrl={club.pictureUrl}
-                      clubDescription={club.description}
-                      clubBackground={club.backgroundcolor}
-                      clubText={club.textcolor}
+                      id={club?.id}
+                      clubName={club?.name}
+                      clubPictureUrl={club?.pictureUrl}
+                      clubDescription={club?.description}
+                      clubBackground={club?.backgroundcolor}
+                      clubText={club?.textcolor}
                       // privated={club.private}
                     />
                   }
                   btnDelete={
-                    <Button
-                      style={{ backgroundColor: "#bd5487", color: "#5d3c76" }}
-                      variant="contained"
-                      onClick={() => onClickDelete(club.id)}
-                    >
-                      Delete
-                    </Button>
+                    <div>
+                      <br />
+                      <Button
+                        variant="contained"
+                        style={{ backgroundColor: "#f2944e", color: "#e4ed58" }}
+                        onClick={() => onClickDelete(club.id)}
+                      >
+                        Delete
+                      </Button>
+                    </div>
                   }
                 />
               </Grid>

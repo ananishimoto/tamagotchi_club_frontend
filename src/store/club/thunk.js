@@ -2,6 +2,7 @@ import axios from "axios";
 import { appLoading, appDoneLoading } from "../appState/slice";
 import { tamagotchisFetched } from "../tamagotchi/slice";
 import {
+  addClub,
   clubFetched,
   clubsFetched,
   deleteUserClub,
@@ -156,3 +157,26 @@ export const deleteClub = (clubId) => async (dispatch, getState) => {
     dispatch(appDoneLoading());
   }
 };
+
+export const addUserClub =
+  (name, description, pictureUrl, backgroundcolor, textcolor, privated) =>
+  async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+      dispatch(appLoading());
+      const club = await axios.post(
+        "http://localhost:4000/club/",
+        { name, description, pictureUrl, backgroundcolor, textcolor, privated },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      dispatch(addClub(club.data));
+      dispatch(appDoneLoading());
+    } catch (error) {
+      console.log(error.message);
+      dispatch(appDoneLoading());
+    }
+  };

@@ -26,6 +26,7 @@ export const clubSlice = createSlice({
       state.loading = false;
     },
     addClub: (state, action) => {
+      state.owner = [...state.owner, action.payload];
       state.list = [...state.list, action.payload];
     },
     publicClubsFetched: (state, action) => {
@@ -35,6 +36,7 @@ export const clubSlice = createSlice({
     deleteUserClub: (state, action) => {
       const clubId = action.payload;
       state.owner = state.owner.filter((club) => club.id !== clubId);
+      state.list = state.list.filter((club) => club.clubId !== clubId);
       state.loading = false;
     },
   },
