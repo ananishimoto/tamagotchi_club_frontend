@@ -32,9 +32,9 @@ const TamagotchiCards = () => {
                 item
                 xs={12}
                 sm={6}
-                md={4}
-                lg={3}
-                xl={2}
+                // md={4}
+                lg={4}
+                xl={3}
                 key={tamagotchi.id}
               >
                 <TamagotchiCard
@@ -44,7 +44,8 @@ const TamagotchiCards = () => {
                   age={tamagotchi.age}
                   deaths={tamagotchi.deaths}
                   generation={tamagotchi.generation}
-                  evolution={tamagotchi.evolution.level}
+                  evolutionlevel={tamagotchi.evolution.level}
+                  evolutionimg={tamagotchi.evolution.imageUrl}
                   evolutionId={tamagotchi.evolution.id}
                   btnEdit={
                     <EditTamagotchiForm

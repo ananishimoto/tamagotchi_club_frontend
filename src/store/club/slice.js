@@ -25,15 +25,29 @@ export const clubSlice = createSlice({
       state.owner = action.payload;
       state.loading = false;
     },
+    addClub: (state, action) => {
+      state.list = [...state.list, action.payload];
+    },
     publicClubsFetched: (state, action) => {
       state.list = action.payload;
+      state.loading = false;
+    },
+    deleteUserClub: (state, action) => {
+      const clubId = action.payload;
+      state.owner = state.owner.filter((club) => club.id !== clubId);
       state.loading = false;
     },
   },
 });
 
-export const { startLoading, clubsFetched, clubFetched, ownerClubsFetched, publicClubsFetched } =
-  clubSlice.actions;
-
+export const {
+  startLoading,
+  clubsFetched,
+  clubFetched,
+  ownerClubsFetched,
+  publicClubsFetched,
+  addClub,
+  deleteUserClub,
+} = clubSlice.actions;
 
 export default clubSlice.reducer;

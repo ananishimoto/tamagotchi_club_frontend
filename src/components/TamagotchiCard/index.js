@@ -1,3 +1,4 @@
+import { Hearts } from "./hearts";
 import "./style.css";
 
 const TamagotchiCard = ({
@@ -6,7 +7,8 @@ const TamagotchiCard = ({
   age,
   deaths,
   generation,
-  evolution,
+  evolutionlevel,
+  evolutionimg,
   evolutionId,
   imageUrl,
   btnEdit,
@@ -23,15 +25,29 @@ const TamagotchiCard = ({
         />
       </div>
       <div className="tamagotchiCardInfo">
-        <h2>{name}</h2>
+        <h3>{name}</h3>
         <div className="tamagotchiSpecs">
           <p>Age: {age}YR</p>
           <p>Deaths: {deaths}</p>
-          <p>Evolution: {evolution}</p>
         </div>
-        <div className="tamagotchiSpecs">
-          <div className="editTamaButton">{btnEdit}</div>
-          <div className="deleteTamaButton">{btnDelete}</div>
+        <div className="tamaevolution">
+          <p>
+            Evolution: {evolutionlevel}
+            <img
+              src={evolutionimg}
+              style={{ maxHeight: "50px", maxWidth: "50px" }}
+              alt={evolutionlevel}
+              className="evolutionImage"
+              loading="lazy"
+            />
+          </p>
+          <p>
+            <Hearts evolutionId={evolutionId} evolutionlevel={evolutionlevel} />
+          </p>
+        </div>
+        <div className="tamagotchiButtons">
+          <div>{btnEdit}</div>
+          <div>{btnDelete}</div>
         </div>
       </div>
     </div>

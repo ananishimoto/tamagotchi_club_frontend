@@ -1,9 +1,9 @@
 import axios from "axios";
 import { appLoading, appDoneLoading } from "../appState/slice";
-import { showMessageWithTimeout } from "../appState/actions";
 import {
   clubFetched,
   clubsFetched,
+  deleteUserClub,
   ownerClubsFetched,
   publicClubsFetched,
 } from "./slice";
@@ -50,6 +50,38 @@ export async function fetchOwnerClubs(dispatch, getState) {
   }
 }
 
+export const updateClub =
+  (id, name, description, pictureUrl, backgroundcolor, textcolor, privated) =>
+  async (dispatch, getState) => {
+    try {
+      const { token } = getState().user;
+      dispatch(appLoading());
+      const response = await axios.patch(
+        `http://localhost:4000/club/${id}`,
+        {
+          name,
+          description,
+          pictureUrl,
+          backgroundcolor,
+          textcolor,
+          privated,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // dispatch(editClub(response.data));
+      // we don't need action, just load owner clubs again
+      dispatch(fetchOwnerClubs);
+      dispatch(appDoneLoading());
+    } catch (error) {
+      console.log(error.message);
+      dispatch(appDoneLoading());
+    }
+  };
+
 export async function fecthNonPrivateClubs(dispatch, getState) {
   try {
     dispatch(appLoading());
@@ -82,3 +114,24 @@ export function fetchClub(id) {
     }
   };
 }
+
+export const deleteClub = (clubId) => async (dispatch, getState) => {
+  try {
+    const { token } = getState().user;
+    dispatch(appLoading());
+    const userClub = await axios.delete(
+      `http://localhost:4000/club/${clubId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }
+    );
+    console.log("deleted", userClub.data);
+    dispatch(deleteUserClub(clubId));
+    dispatch(appDoneLoading());
+  } catch (error) {
+    console.log(error.message);
+    dispatch(appDoneLoading());
+  }
+};
