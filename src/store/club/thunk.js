@@ -14,11 +14,13 @@ export async function fetchClubTamagotchis(dispatch, getState) {
   try {
     dispatch(appLoading());
     const members = getState().club.list.users;
-    console.log("members", members[0].id);
 
-    const response = await axios.get("http://localhost:4000/tamagotchi", {
-      where: { userId: members.id },
-    });
+    const ids = members.map((m) => m.id);
+    const parsedIds = JSON.stringify(ids);
+
+    const response = await axios.get(
+      `http://localhost:4000/tamagotchi/group/${parsedIds}`
+    );
     console.log("thunk club tama response", response.data);
     const clubtamagotchis = response.data;
 

@@ -6,14 +6,20 @@ import "./style.css";
 import { TamagotchiCard, Loading } from "../../components";
 import { selectTamagotchis } from "../../store/tamagotchi/selector";
 import { fetchClubTamagotchis } from "../../store/club/thunk";
+import { selectClubs } from "../../store/club/selector";
 
 const TamagotchiClubCards = () => {
   const dispatch = useDispatch();
   const tamagotchis = useSelector(selectTamagotchis);
+  const club = useSelector(selectClubs);
+  console.log("tamagotchis", club);
 
   useEffect(() => {
-    dispatch(fetchClubTamagotchis);
-  }, [dispatch]);
+    if (club) {
+      console.log("only once!");
+      dispatch(fetchClubTamagotchis);
+    }
+  }, [dispatch, club]);
 
   return tamagotchis ? (
     <div className="tamagotchicardspage">
