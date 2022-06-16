@@ -9,6 +9,7 @@ import { fetchClub } from "../../store/club/thunk";
 import { Loading } from "../../components";
 import { MemberCards } from "./membercards";
 import { TamagotchiClubCards } from "./tamagotchicards";
+import { selectTamagotchis } from "../../store/tamagotchi/selector";
 
 const Club = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,16 @@ const Club = () => {
   const clubDetails = useSelector(selectClubs);
   const clubMembers = useSelector(selectClubMembers);
   console.log("club members", clubMembers);
+  const tamagotchis = useSelector(selectTamagotchis);
+
+  const mapped = tamagotchis.map((tamagotchi) => tamagotchi.deaths);
+  console.log("mapped", mapped);
+
+  let sum = 0;
+  for (let i = 0; i < mapped.length; i++) {
+    sum += mapped[i];
+  }
+  console.log("sum", sum);
 
   useEffect(() => {
     dispatch(fetchClub(routeParams.id));
@@ -64,7 +75,7 @@ const Club = () => {
         }}
       >
         <h2>Club stats</h2>
-        <p>Total deaths:</p>
+        <p>Total deaths: {sum}</p>
       </div>
       <div
         className="clubsection"
@@ -78,7 +89,7 @@ const Club = () => {
           <TamagotchiClubCards />
         </div>
       </div>
-      <div
+      {/* <div
         className="clubsection"
         style={{
           backgroundColor: `${clubDetails.backgroundcolor}88`,
@@ -89,7 +100,7 @@ const Club = () => {
         <div>
           <MemberCards />
         </div>
-      </div>
+      </div> */}
     </div>
   ) : (
     <Loading />
