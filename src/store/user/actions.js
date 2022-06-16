@@ -3,7 +3,12 @@ import axios from "axios";
 import { selectToken } from "./selectors";
 import { appLoading, appDoneLoading, setMessage } from "../appState/slice";
 import { showMessageWithTimeout } from "../appState/actions";
-import { loginSuccess, logOut, tokenStillValid } from "./slice";
+import {
+  loginSuccess,
+  logOut,
+  tokenStillValid,
+  updateUserProfile,
+} from "./slice";
 
 export const signUp = (name, email, password) => {
   return async (dispatch, getState) => {
@@ -112,6 +117,57 @@ export const getUserWithStoredToken = () => {
       // if we get a 4xx or 5xx response,
       // get rid of the token by logging out
       dispatch(logOut());
+      dispatch(appDoneLoading());
+    }
+  };
+};
+
+// Update user information
+
+export const updateProfile = ({ name, email, photoUrl, userId, close }) => {
+  return async (dispatch, getState) => {
+    dispatch(appLoading());
+    try {
+      const { token } = getState().user;
+      const updatedUser = await axios.patch(
+        `${apiUrl}/user/${userId}`,
+        {
+          name,
+          email,
+          photoUrl,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      console.log("here", updatedUser);
+      // dispatch(loginSuccess());
+      dispatch(updateUserProfile(updatedUser.data));
+      dispatch(appDoneLoading());
+      close();
+    } catch (error) {
+      if (error.response) {
+        console.log("what is going on");
+        dispatch(
+          setMessage({
+            variant: "danger",
+            dismissable: true,
+            text: error.response.data.message,
+          })
+        );
+      } else {
+        console.log("what is going on, but on else", error.message);
+        dispatch(
+          setMessage({
+            variant: "danger",
+            dismissable: true,
+            // text: error.response.data.message,
+          })
+        );
+      }
       dispatch(appDoneLoading());
     }
   };

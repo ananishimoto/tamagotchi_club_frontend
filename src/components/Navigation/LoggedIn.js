@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logOut } from "../../store/user/slice";
 import {
@@ -9,9 +9,10 @@ import {
   Menu,
   MenuItem,
 } from "@mui/material";
-import ArrowDropDownCircleIcon from "@mui/icons-material/ArrowDropDownCircle";
 import { selectUser } from "../../store/user/selectors";
 import Nav from "react-bootstrap/Nav";
+import EditUserInfoForm from "../EditUserForm";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme({
   palette: {
@@ -24,36 +25,35 @@ const theme = createTheme({
   },
 });
 
-export default function LoggedIn() {
+export default function LoggedIn(props) {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user = useSelector(selectUser);
 
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+
+  const [edit, setEdit] = useState(false);
+  console.log("edit profile button", edit);
+
+  const logout = () => {
+    dispatch(logOut());
+    navigate("/login");
+  };
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const handleFormClose = () => {
+    setEdit(false);
+  };
 
   return (
     <div className="loggedin">
       <Nav.Item style={{ padding: ".5rem 1rem" }}>{user?.name}</Nav.Item>
-      <Button color="inherit" onClick={() => dispatch(logOut())}>
-        <Link
-          href="/login"
-          color="inherit"
-          underline="none"
-          theme={theme}
-          className="custom-link"
-        >
-          Logout
-        </Link>
-      </Button>
-      <Link href="/profile">
-        <Avatar alt="photo" src={user?.photoUrl}></Avatar>
-      </Link>
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
@@ -61,7 +61,7 @@ export default function LoggedIn() {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
       >
-        <ArrowDropDownCircleIcon fontSize="large" sx={{ color: "#c2185b" }} />
+        <Avatar alt="photo" src={user?.photoUrl}></Avatar>
       </Button>
       <Menu
         id="basic-menu"
@@ -83,8 +83,14 @@ export default function LoggedIn() {
             Profile page
           </Link>
         </MenuItem>
-        <MenuItem onClick={handleClose}>Edit profile</MenuItem>
+        <MenuItem onClick={() => setEdit(true)}>Edit profile</MenuItem>
+        <MenuItem onClick={logout}>Logout</MenuItem>
       </Menu>
+      <EditUserInfoForm
+        handleFormClose={handleFormClose}
+        open={edit}
+        close={() => setEdit(false)}
+      />
     </div>
   );
 }
