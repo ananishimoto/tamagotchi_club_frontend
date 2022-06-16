@@ -27,6 +27,8 @@ const ClubCards = () => {
                   name={club?.club.name}
                   pictureUrl={club?.club.pictureUrl}
                   description={club?.club.description}
+                  backgroundcolor={club?.club.backgroundcolor}
+                  textcolor={club?.club.textcolor}
                 />
               </Grid>
             );

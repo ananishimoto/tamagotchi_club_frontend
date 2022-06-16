@@ -34,6 +34,8 @@ const ClubOwnerCards = () => {
                   name={club?.name}
                   pictureUrl={club?.pictureUrl}
                   description={club?.description}
+                  backgroundcolor={club?.backgroundcolor}
+                  textcolor={club?.textcolor}
                   btnEdit={
                     <EditClubForm
                       id={club?.id}

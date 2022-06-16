@@ -6,11 +6,21 @@ const ClubCard = ({
   name,
   description,
   pictureUrl,
+  backgroundcolor,
+  textcolor,
   btnEdit,
   btnDelete,
 }) => {
   return (
-    <div className="clubCard" key={id}>
+    <div
+      className="clubCard"
+      key={id}
+      style={{
+        backgroundColor: `${backgroundcolor}`,
+        borderColor: `${textcolor}`,
+        color: `${textcolor}`,
+      }}
+    >
       <div className="clubCardImageBox">
         <img src={pictureUrl} alt={name} className="clubImage" loading="lazy" />
       </div>
