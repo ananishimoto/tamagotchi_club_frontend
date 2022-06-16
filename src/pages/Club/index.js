@@ -73,9 +73,9 @@ const Club = () => {
           color: `${clubDetails.textcolor}`,
         }}
       >
-        <h2>Members</h2>
+        <h2>Tamagotchis</h2>
         <div>
-          <MemberCards />
+          <TamagotchiClubCards />
         </div>
       </div>
       <div
@@ -85,9 +85,9 @@ const Club = () => {
           color: `${clubDetails.textcolor}`,
         }}
       >
-        <h2>Tamagotchis</h2>
+        <h2>Members</h2>
         <div>
-          <TamagotchiClubCards />
+          <MemberCards />
         </div>
       </div>
     </div>

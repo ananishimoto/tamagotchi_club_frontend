@@ -6,7 +6,6 @@ import "./style.css";
 import { TamagotchiCard, Loading } from "../../components";
 import { selectTamagotchis } from "../../store/tamagotchi/selector";
 import { fetchClubTamagotchis } from "../../store/club/thunk";
-import { fetchTamagotchis } from "../../store/tamagotchi/thunk";
 
 const TamagotchiClubCards = () => {
   const dispatch = useDispatch();

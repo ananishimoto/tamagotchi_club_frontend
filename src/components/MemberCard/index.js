@@ -1,7 +1,6 @@
-import { TamagotchiCard } from "..";
 import "./style.css";
 
-const MemberCard = ({ id, name, photoUrl, props }) => {
+const MemberCard = ({ id, name, photoUrl }) => {
   return (
     <div className="memberCard" key={id}>
       <div className="memberCardInfo">
@@ -15,15 +14,6 @@ const MemberCard = ({ id, name, photoUrl, props }) => {
         </div>
         <h2>{name}</h2>
       </div>
-      {/* <TamagotchiCard
-      id={props.id}
-      name={props.name}
-      age={props.age}
-      deaths={props.deaths}
-      generation={props.generation}
-      imageUrl={props.imageUrl}
-      evolution={props.evolution.level}
-      /> */}
     </div>
   );
 };
