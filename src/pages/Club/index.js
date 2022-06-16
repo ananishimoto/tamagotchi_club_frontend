@@ -15,7 +15,7 @@ const Club = () => {
   const routeParams = useParams();
   const clubDetails = useSelector(selectClubs);
   const clubMembers = useSelector(selectClubMembers);
-  console.log(clubMembers);
+  console.log("club members", clubMembers);
 
   useEffect(() => {
     dispatch(fetchClub(routeParams.id));
