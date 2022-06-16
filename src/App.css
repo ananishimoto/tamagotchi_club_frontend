@@ -1,6 +1,12 @@
+@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+body {
+  font-family: "VT323";
+}
+
 .background {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    z-index: -99999;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: -99999;
 }
