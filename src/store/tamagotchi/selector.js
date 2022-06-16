@@ -1,1 +1,1 @@
-export const selectTamagotchis = (reduxState) => reduxState.tamagotchi.list;
+export const selectTamagotchis = (reduxState) => reduxState.tamagotchi?.list;
