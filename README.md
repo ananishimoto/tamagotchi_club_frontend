@@ -29,3 +29,6 @@
 
 <p>Tips page</p>
 <img alt="tips page" src="https://media.giphy.com/media/EGzIIHYa8SGbJzcgja/giphy.gif"/>
+
+<p>Club page</p>
+<img alt="club page" src="https://media.giphy.com/media/k4qQvjYNtQoryEZc5p/giphy.gif"/>
