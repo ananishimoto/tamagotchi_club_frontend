@@ -1,4 +1,6 @@
 <h1>Tamagotchi club</h1>
+<p>Codaisseur group project with the purpose to connect tamagotchi lovers</p>
+<p>Website for keeping track on your tamagotchi’s life with opportunity to create clubs with other people.</p>
 
 <h2>Tech stack</h2>
 <h3>Front-end</h3>
