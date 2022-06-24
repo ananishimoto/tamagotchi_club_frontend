@@ -1,6 +1,7 @@
 <h1>Tamagotchi club</h1>
-<p>Codaisseur group project with the purpose to connect tamagotchi lovers</p>
-<p>Website for keeping track on your tamagotchi’s life with opportunity to create clubs with other people.</p>
+<p>Codaisseur group project with the theme: Love. the purpose to connect tamagotchi lovers</p>
+<p>Our team decided to create a platform for Tamagotchi lovers, by Tamagotchi lovers.
+Here you can keep track of your virtual pet and create clubs with other tamagotchi owners.</p>
 
 <h2>Tech stack</h2>
 <h3>Front-end</h3>
