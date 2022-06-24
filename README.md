@@ -23,6 +23,7 @@
 <h3> UI Frameworks </h3>
 <p>
   <img alt="Material UI" height="30px" src="https://img.shields.io/badge/-MaterialUI-%2320232a.svg?style=for-the-badge&logo=MUI&logoColor=blue"/>
+  <img alt="Konva" height="30px" src="https://img.shields.io/badge/-Konva-%2320232a.svg?style=for-the-badge&logo=Konva&logoColor=green"/>
  </p>
 
 <h2>Demo</h2>
